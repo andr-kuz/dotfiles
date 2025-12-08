@@ -39,6 +39,7 @@ in
     libxkbfile
     python3
   ];
+  builtins.exec ["rustup" "default" "stable"]  # set rust defaul channel
 
   # services.lsp.servers.clangd.enable = true;
 
