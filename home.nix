@@ -18,7 +18,14 @@ in
   home.username = "valtrois";
   home.homeDirectory = "/home/valtrois";
 
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+    google-chrome
+    kitty
+    wofi
+    zsh-powerlevel10k
+    meslo-lgs-nf  # Powerlevel10k icon font
+    hypridle
     git
     neovim
     # neovim plugins requirements
@@ -30,6 +37,7 @@ in
     rustup
     unzip
     libxkbfile
+    python3
   ];
 
   # services.lsp.servers.clangd.enable = true;
