@@ -39,19 +39,24 @@ in
     libxkbfile
     python3
   ];
-  builtins.exec ["rustup" "default" "stable"]  # set rust defaul channel
+  home.activation.myUserScript = ''
+    ${pkgs.rustup}/bin/rustup default stable # set rust defaul channel
+  '';
 
-  # services.lsp.servers.clangd.enable = true;
+  services.syncthing = {
+    enable = true;
+  };
 
-  home.file.".zshenv" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/zsh/.zshenv";
+  home.file = {
+    ".zshenv" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/zsh/.zshenv";
+    };
+    ".zshrc" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/zsh/.zshrc";
+    };
   };
 
   xdg.configFile = {
-    "zsh" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/zsh";
-      recursive = true;
-    };
     "nvim" = {
       source = builtins.fetchGit {
         url = "https://github.com/${myGithub}/nvim.git";
