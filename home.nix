@@ -64,6 +64,12 @@ in
         ref = "master";
       };
     };
+
+    "hypr" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/hypr";
+      recursive = true;
+      force = true;
+    };
   };
 
   programs.git = {
