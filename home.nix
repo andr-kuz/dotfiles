@@ -20,6 +20,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+    wl-clipboard
     google-chrome
     kitty
     wofi
