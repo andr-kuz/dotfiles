@@ -59,10 +59,9 @@ in
 
   xdg.configFile = {
     "nvim" = {
-      source = builtins.fetchGit {
-        url = "https://github.com/${myGithub}/nvim.git";
-        ref = "master";
-      };
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/nvim";
+      recursive = true;
+      force = true;
     };
 
     "hypr" = {
