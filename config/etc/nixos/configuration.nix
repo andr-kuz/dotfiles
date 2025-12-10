@@ -90,6 +90,7 @@ in
     })
     wget
     p7zip
+    blueberry
   ];
 
   environment.etc.vimrc.source = "${config.users.users.valtrois.home}/.dotfiles/config/vim/vimrc";
@@ -108,7 +109,6 @@ in
       user = "valtrois";
     };
   };
-  services.blueman.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true;
 
