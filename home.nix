@@ -39,6 +39,8 @@ in
     unzip
     libxkbfile
     python3
+    fzf
+    ripgrep
   ];
   home.activation.myUserScript = ''
     ${pkgs.rustup}/bin/rustup default stable # set rust defaul channel
@@ -46,8 +48,8 @@ in
 
   services.syncthing = {
     enable = true;
-    openDefaultPorts = true;
     # https://wiki.nixos.org/wiki/Syncthing
+    # openDefaultPorts = true;
     # settings = {
     #   gui = {
     #     user = "myuser";
