@@ -14,6 +14,7 @@ in
       /etc/nixos/hardware-configuration.nix
       ./proxy.nix
       ./auto-mount.nix
+      ./audio.nix
       (import "${home-manager}/nixos")
     ];
 
@@ -58,7 +59,10 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.valtrois = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ 
+      "networkmanager" 
+      "wheel" 
+    ];
   };
 
   programs.steam.enable = true;
