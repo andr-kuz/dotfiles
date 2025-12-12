@@ -95,6 +95,8 @@ in
     wget
     p7zip
     blueberry
+    qbittorrent
+    vlc
   ];
 
   environment.etc.vimrc.source = "${config.users.users.valtrois.home}/.dotfiles/config/vim/vimrc";
