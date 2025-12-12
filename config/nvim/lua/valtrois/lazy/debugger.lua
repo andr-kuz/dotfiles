@@ -13,9 +13,7 @@ return {
             "rcarriga/nvim-dap-ui"
         },
         config = function(_, opts)
-            local path = "/usr/bin/python"
-            local dap_py = require("dap-python")
-            dap_py.setup(path)
+            require("dap-python").setup("python")
         end
     },
     {
