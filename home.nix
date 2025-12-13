@@ -41,9 +41,6 @@ in
     python3
     fzf
     ripgrep
-    (python3.withPackages (ps: with ps; [
-      debugpy
-    ]))
   ];
   home.activation.myUserScript = ''
     ${pkgs.rustup}/bin/rustup default stable # set rust defaul channel

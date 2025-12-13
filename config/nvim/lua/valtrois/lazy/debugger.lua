@@ -13,9 +13,7 @@ return {
             "rcarriga/nvim-dap-ui"
         },
         config = function(_, opts)
-            local python_path = vim.fn.system('type -a python')
-            local global_python_path = python_path:match('\npython is (/.*)\n$')
-            require('dap-python').setup(global_python_path)
+            require('dap-python').setup('~/.debugpy/bin/python')
         end
     },
     {
