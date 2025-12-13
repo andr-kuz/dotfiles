@@ -15,6 +15,7 @@ in
       ./proxy.nix
       ./auto-mount.nix
       ./audio.nix
+      ./postgres.nix
       (import "${home-manager}/nixos")
     ];
 
