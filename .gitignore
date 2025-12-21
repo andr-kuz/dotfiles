@@ -1,3 +1,2 @@
-*.lock
 lazy-lock.json
 .proxy_config.nix
