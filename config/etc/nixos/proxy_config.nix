@@ -2,5 +2,8 @@
 # The plugin client will be detected automatically
 # Do not forget to `sudo nixos-rebuild switch` after
 {
-  bridge = "obfs4 IP:PORT ..."; # or "snowflake IP:PORT ..."
+  bridges = [
+    "obfs4 <IP>:<PORT> ..."
+    "..."
+  ];
 }

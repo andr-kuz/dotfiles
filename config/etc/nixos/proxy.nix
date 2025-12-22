@@ -2,8 +2,9 @@
 
 let
   vars = import ./.proxy_config.nix;
-  bridge = vars.bridge;
-  plugin = if (lib.hasPrefix "obfs4" bridge) then
+  bridges = vars.bridges;
+  first_bridge = builtins.elemAt bridges 0;
+  plugin = if (lib.hasPrefix "obfs4" first_bridge) then
     "obfs4 exec ${pkgs.obfs4}/bin/lyrebird"
   else
     "snowflake exec ${pkgs.snowflake}/bin/client";
@@ -15,7 +16,7 @@ in
     settings = {
       UseBridges = true;
       ClientTransportPlugin = plugin;
-      Bridge = bridge;
+      Bridge = bridges;
     };
   };
 
