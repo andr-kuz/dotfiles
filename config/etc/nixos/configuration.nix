@@ -56,6 +56,7 @@ in
     layout = "us";
     variant = "";
   };
+  services.udisks2.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.valtrois = {
