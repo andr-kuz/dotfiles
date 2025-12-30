@@ -14,6 +14,12 @@ return {
         },
         config = function(_, opts)
             require('dap-python').setup('~/.debugpy/bin/python')
+            local dap = require("dap")
+            if dap.configurations.python then
+                for _, config in ipairs(dap.configurations.python) do
+                    config.justMyCode = false
+                end
+            end
         end
     },
     {
@@ -61,22 +67,6 @@ return {
             dap.listeners.after.event_initialized.dapui_config = function()
                 dapui.open()
             end
-            -- dap.configurations.python = {
-            --     {
-            --         justMyCode = false,
-            --         type = "python",
-            --         request = 'launch',
-            --         name = 'launch file',
-            --         program = '${file}',
-            --         pythonPath = function()
-            --             local venv_path = os.getenv("VIRTUAL_ENV")
-            --             if venv_path then
-            --             return venv_path .. "/bin/python"
-            --             end
-            --             return "/usr/bin/python3"
-            --         end
-            --     },
-            -- }
         end
     }
 }
