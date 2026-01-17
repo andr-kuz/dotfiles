@@ -16,6 +16,7 @@ in
       ./auto-mount.nix
       ./audio.nix
       # ./postgres.nix
+      ./docker.nix
       (import "${home-manager}/nixos")
     ];
 
