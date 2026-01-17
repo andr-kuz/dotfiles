@@ -27,7 +27,7 @@ in
     zsh-powerlevel10k
     meslo-lgs-nf  # Powerlevel10k icon font
     hypridle
-    git
+    hyprshot
     neovim
     # neovim plugins requirements
     nodejs
