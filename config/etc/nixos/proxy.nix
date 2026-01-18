@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  vars = import ./.proxy_config.nix;
+  vars = import ./proxy_config.nix;
   bridges = vars.bridges;
   first_bridge = builtins.elemAt bridges 0;
   plugin = if (lib.hasPrefix "obfs4" first_bridge) then
