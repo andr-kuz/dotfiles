@@ -17,6 +17,7 @@ in
       ./audio.nix
       ./waydroid.nix
       ./android-adb.nix
+      ./httptoolkit.nix
       # ./postgres.nix
       ./docker.nix
       (import "${home-manager}/nixos")
