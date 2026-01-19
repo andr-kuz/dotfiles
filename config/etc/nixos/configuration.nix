@@ -15,6 +15,8 @@ in
       ./proxy.nix
       ./auto-mount.nix
       ./audio.nix
+      ./waydroid.nix
+      ./android-adb.nix
       # ./postgres.nix
       ./docker.nix
       (import "${home-manager}/nixos")
