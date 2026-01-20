@@ -72,6 +72,7 @@ in
   };
 
   programs.steam.enable = true;
+  programs.nix-ld.enable = true;  # allows to run unpatched binaries
   programs.zsh = {
     enable = true;
     # Optional Zsh features
