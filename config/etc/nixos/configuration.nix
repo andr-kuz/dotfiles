@@ -150,4 +150,14 @@ in
   system.stateVersion = "25.11"; # Did you read the comment?
   hardware.bluetooth.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  services.kanata = {
+    # reboot required
+    enable = true;
+    keyboards = {
+      valtrois = {
+        configFile = "${/home/valtrois/.dotfiles/kanata/kanata.kbd}";
+      };
+    };
+  };
 }

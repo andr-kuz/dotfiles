@@ -1,0 +1,15 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps
+)
+
+(defalias
+  c-spc (tap-hold 100 200 C-spc lctrl)
+)
+
+(deflayer base
+  @c-spc
+)
