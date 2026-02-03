@@ -20,9 +20,10 @@ NIXOS_CONFIG_PATH="$ORIGINAL_HOME/.dotfiles/config/etc/nixos"
 SOURCE_FILE="$NIXOS_CONFIG_PATH/configuration.nix"
 
 PROXY_CONFIG_TEMPLATE="$NIXOS_CONFIG_PATH/.proxy_config.nix"
+PROXY_CONFIG_FILE="$NIXOS_CONFIG_PATH/proxy_config.nix"
 
-if [ -e "$PROXY_CONFIG_TEMPLATE" ]; then
-    mv $PROXY_CONFIG_TEMPLATE "$NIXOS_CONFIG_PATH/proxy_config.nix"
+if [ -e "$PROXY_CONFIG_TEMPLATE" ] && [ ! -f $PROXY_CONFIG_FILE ]; then
+    cp $PROXY_CONFIG_TEMPLATE $PROXY_CONFIG_FILE
 fi
 
 # Check if the source file exists
