@@ -13,7 +13,7 @@ return {
             "rcarriga/nvim-dap-ui"
         },
         config = function(_, opts)
-            require('dap-python').setup('~/.debugpy/bin/python')
+            require('dap-python').setup('~/.debugpy/bin/python')  -- cd ~ && python -m venv .debugpy && .debugpy/bin/pip install debugpy
             local dap = require("dap")
             if dap.configurations.python then
                 for _, config in ipairs(dap.configurations.python) do
