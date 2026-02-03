@@ -16,7 +16,14 @@ fi
 
 CONFIG_FILE="/etc/nixos/configuration.nix"
 BACKUP_FILE="/etc/nixos/configuration.backup.nix"
-SOURCE_FILE="$ORIGINAL_HOME/.dotfiles/config/etc/nixos/configuration.nix"
+NIXOS_CONFIG_PATH="$ORIGINAL_HOME/.dotfiles/config/etc/nixos"
+SOURCE_FILE="$NIXOS_CONFIG_PATH/configuration.nix"
+
+PROXY_CONFIG_TEMPLATE="$NIXOS_CONFIG_PATH/.proxy_config.nix"
+
+if [ -e "$PROXY_CONFIG_TEMPLATE" ]; then
+    mv $PROXY_CONFIG_TEMPLATE "$NIXOS_CONFIG_PATH/proxy_config.nix"
+fi
 
 # Check if the source file exists
 if [ ! -f "$SOURCE_FILE" ]; then
