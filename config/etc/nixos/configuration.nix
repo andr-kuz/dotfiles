@@ -16,6 +16,7 @@ in
       ./auto-mount.nix
       ./audio.nix
       ./kanata.nix
+      ./sunshine.nix
       # ./waydroid.nix
       # ./android-adb.nix
       # ./httptoolkit.nix
