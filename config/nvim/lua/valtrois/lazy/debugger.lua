@@ -17,7 +17,7 @@ return {
             local dap = require("dap")
             if dap.configurations.python then
                 for _, config in ipairs(dap.configurations.python) do
-                    config.justMyCode = false
+                    config.justMyCode = true
                 end
             end
         end
