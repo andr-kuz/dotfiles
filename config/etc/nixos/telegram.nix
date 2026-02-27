@@ -1,3 +1,4 @@
+{ lib, pkgs, ... }:
 let
   trigger = builtins.pathExists /tmp/telegram.enable;
 in
