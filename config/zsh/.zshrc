@@ -14,3 +14,8 @@ plugins=(git battery)
 #
 # setopt promptsubst
 # RPROMPT='$(battery_pct_prompt)'
+#
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=1000000000
+export SAVEHIST=1000000000
+setopt EXTENDED_HISTORY
