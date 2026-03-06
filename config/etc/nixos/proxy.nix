@@ -6,6 +6,8 @@ let
   first_bridge = builtins.elemAt bridges 0;
   plugin = if (lib.hasPrefix "obfs4" first_bridge) then
     "obfs4 exec ${pkgs.obfs4}/bin/lyrebird"
+  else if (lib.hasPrefix "webtunnel" first_bridge) then
+    "webtunnel exec ${pkgs.webtunnel}/bin/client"
   else
     "snowflake exec ${pkgs.snowflake}/bin/client";
 in 
