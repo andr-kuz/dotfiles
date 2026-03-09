@@ -42,8 +42,6 @@ vim.keymap.set('n', '<leader>q', 'q', { noremap = true, silent = true })
 -- treat ctrl-c as esc
 vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('i', '<C-a>', '<Esc>la', { noremap = true, silent = true })
-
 vim.api.nvim_create_autocmd('BufEnter', {
     pattern = "*.md",
     callback = function()
