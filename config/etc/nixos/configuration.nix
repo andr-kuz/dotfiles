@@ -23,6 +23,7 @@ in
       # ./httptoolkit.nix
       # ./postgres.nix
       ./docker.nix
+      ./kdeconnect.nix
       (import "${home-manager}/nixos")
     ];
 
