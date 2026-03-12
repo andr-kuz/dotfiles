@@ -13,7 +13,9 @@ in
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
       ./proxy.nix
-      ./auto-mount.nix
+      ./internal_ssd.nix
+      ./16_microsd_music.nix
+      ./tascam_dr_05x_recorder.nix
       ./audio.nix
       ./kanata.nix
       ./sunshine.nix
