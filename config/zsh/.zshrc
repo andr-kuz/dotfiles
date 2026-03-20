@@ -19,3 +19,9 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000000
 export SAVEHIST=1000000000
 setopt EXTENDED_HISTORY
+
+autoload -U select-word-style
+select-word-style bash
+
+# By making it empty, all non-alphanumeric characters (including /) become delimiters.
+WORDCHARS=""
