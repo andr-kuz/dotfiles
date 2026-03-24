@@ -1,0 +1,2 @@
+[alias]
+    amnd = !git commit --amend --no-edit
