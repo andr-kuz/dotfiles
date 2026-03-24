@@ -81,6 +81,9 @@ in
     ".zshrc" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/zsh/.zshrc";
     };
+    ".bash_functions" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/zsh/.bash_functions";
+    };
   };
 
   xdg.configFile = {

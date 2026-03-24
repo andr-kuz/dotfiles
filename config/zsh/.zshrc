@@ -25,3 +25,5 @@ select-word-style bash
 
 # By making it empty, all non-alphanumeric characters (including /) become delimiters.
 WORDCHARS=""
+
+source "$HOME/.bash_functions"
