@@ -1,43 +1,52 @@
 vim.g.mapleader = ' '
 
-vim.keymap.set({'n', 'v'}, '<leader>y', 'y')
-vim.keymap.set({'n', 'v'}, '<leader>Y', 'y$')
-vim.keymap.set({'n', 'v'}, 'y', '"+y', { desc = 'Yank to system clipboard' })
-vim.keymap.set({'n', 'v'}, 'Y', '"+y$', { desc = 'Yank line to system clipboard' })
+local map = vim.keymap.set
 
-vim.keymap.set({'n', 'x'}, 'd', '"_d')
-vim.keymap.set({'n', 'x'}, 'D', '"_D')
-vim.keymap.set({'n', 'x'}, 'x', '"_x')
-vim.keymap.set({'n', 'x'}, 'c', '"_c')
-vim.keymap.set({'n', 'n'}, 'C', '"_C')
-vim.keymap.set({'n', 'x'}, '<leader>d', 'd')
+map('n', ';', 'q:')
 
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({'n', 'v'}, '<leader>y', 'y')
+map({'n', 'v'}, '<leader>Y', 'y$')
+map({'n', 'v'}, 'y', '"+y', { desc = 'Yank to system clipboard' })
+map({'n', 'v'}, 'Y', '"+y$', { desc = 'Yank line to system clipboard' })
 
-vim.keymap.set('n', '<leader>t', '<Cmd>horizontal terminal<CR>i')
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-vim.keymap.set('t', '<A-h>', '<C-\\><C-n><C-w>h', { noremap = true, silent = true })
-vim.keymap.set('t', '<A-j>', '<C-\\><C-n><C-w>j', { noremap = true, silent = true })
-vim.keymap.set('t', '<A-k>', '<C-\\><C-n><C-w>k', { noremap = true, silent = true })
-vim.keymap.set('t', '<A-l>', '<C-\\><C-n><C-w>l', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-x>', '<Cmd>bd!', { noremap = true, silent = true })
+map({'n', 'x'}, 'd', '"_d')
+map({'n', 'x'}, 'D', '"_D')
+map({'n', 'x'}, 'x', '"_x')
+map({'n', 'x'}, 'c', '"_c')
+map({'n', 'n'}, 'C', '"_C')
+map({'n', 'x'}, '<leader>d', 'd')
 
-vim.keymap.set('i', '<A-h>', '<C-n><C-w>hi', { noremap = true, silent = true })
-vim.keymap.set('i', '<A-j>', '<C-n><C-w>ji', { noremap = true, silent = true })
-vim.keymap.set('i', '<A-k>', '<C-n><C-w>ki', { noremap = true, silent = true })
-vim.keymap.set('i', '<A-l>', '<C-n><C-w>li', { noremap = true, silent = true })
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.keymap.set('n', '<A-h>', '<C-w>h', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-j>', '<C-w>j', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-k>', '<C-w>k', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-l>', '<C-w>l', { noremap = true, silent = true })
+map('n', '<leader>t', '<Cmd>horizontal terminal<CR>i')
 
-vim.keymap.set('n', '<leader>e', '<Cmd>Ex<CR>')
-vim.keymap.set('n', '<leader>E', '<Cmd>vsplit ' .. vim.fs.dirname(vim.fn.expand('$MYVIMRC')) .. '/lua/valtrois/remap.lua<CR><Cmd>setlocal bufhidden=wipe<CR><Cmd>lcd %:p:h<CR>')
-vim.keymap.set('n', '<leader>V', '<Cmd>vsplit ~/zettelkasten/Vim.md<CR><Cmd>setlocal bufhidden=wipe<CR><Cmd>lcd %:p:h<CR>')
-vim.keymap.set('n', '<leader>q', 'q', { noremap = true, silent = true })
+map('t', '<Esc>', '<C-\\><C-n>')
+map('t', '<A-h>', '<C-\\><C-n><C-w>h', { noremap = true, silent = true })
+map('t', '<A-j>', '<C-\\><C-n><C-w>j', { noremap = true, silent = true })
+map('t', '<A-k>', '<C-\\><C-n><C-w>k', { noremap = true, silent = true })
+map('t', '<A-l>', '<C-\\><C-n><C-w>l', { noremap = true, silent = true })
+map('t', '<C-d>', '<Cmd>bd!', { noremap = true, silent = true })
+
+map('i', '<A-h>', '<C-o><C-w>h', { noremap = true, silent = true })
+map('i', '<A-j>', '<C-o><C-w>j', { noremap = true, silent = true })
+map('i', '<A-k>', '<C-o><C-w>k', { noremap = true, silent = true })
+map('i', '<A-l>', '<C-o><C-w>l', { noremap = true, silent = true })
+
+map('n', '<A-h>', '<C-w>h', { noremap = true, silent = true })
+map('n', '<A-j>', '<C-w>j', { noremap = true, silent = true })
+map('n', '<A-k>', '<C-w>k', { noremap = true, silent = true })
+map('n', '<A-l>', '<C-w>l', { noremap = true, silent = true })
+
+map('n', '<leader>e', '<Cmd>Ex<CR>')
+map('n', '<leader>E', '<Cmd>vsplit ' .. vim.fs.dirname(vim.fn.expand('$MYVIMRC')) .. '/lua/valtrois/remap.lua<CR><Cmd>setlocal bufhidden=wipe<CR><Cmd>lcd %:p:h<CR>')
+map('n', '<leader>V', '<Cmd>vsplit ~/zettelkasten/Vim.md<CR><Cmd>setlocal bufhidden=wipe<CR><Cmd>lcd %:p:h<CR>')
+map('n', '<leader>q', 'q', { noremap = true, silent = true })
 
 -- treat ctrl-c as esc
 vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>', { noremap = true, silent = true })
