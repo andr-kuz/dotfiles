@@ -101,6 +101,12 @@ in
       recursive = true;
       force = true;
     };
+
+    "kitty" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/kitty";
+      recursive = true;
+      force = true;
+    };
   };
 
   programs.git = {
