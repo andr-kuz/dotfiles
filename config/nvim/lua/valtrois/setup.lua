@@ -1,3 +1,7 @@
+vim.cmd("colorscheme sorbet")
+vim.cmd("highlight Normal guibg=NONE")
+vim.cmd("highlight NormalFloat guibg=NONE") -- for floating windows
+
 vim.wo.number = true
 vim.wo.relativenumber = true
 
