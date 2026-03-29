@@ -23,3 +23,23 @@ rm_tail() {
 
     find $dir ${depth[@]} -name "*$tail" -type f $action
 }
+
+
+# ga() {
+#   push_tail=()
+#   args=("$@")
+#   commit=(git commit --amend --no-edit)
+#
+#   for ((i=1; i<${#args[@]}; i++)); do
+#     arg="${args[$i]}"
+#     echo $arg
+#     if [[ $arg == "p" ]]; then
+#       push_tail=('&&' git push ${args[@]:$i})
+#       break
+#     elif [[ $arg == "-m" ]]; then
+#       commit=(git commit -m \"${args[$i+1]}\")
+#     fi
+#   done
+#
+#   echo "${commit[@]} ${push_tail[@]}"
+# }
