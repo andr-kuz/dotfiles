@@ -78,6 +78,7 @@ in
     ];
   };
 
+  programs.neovim.defaultEditor = true;
   programs.steam.enable = true;
   programs.nix-ld.enable = true;  # allows to run unpatched binaries
   programs.zsh = {
