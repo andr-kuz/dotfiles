@@ -2,6 +2,12 @@ vim.g.mapleader = ' '
 
 local map = vim.keymap.set
 
+map({'n', 'v'}, 'y', function()
+  -- increments `y` number argument by one
+  local count = vim.v.count
+  vim.cmd('normal! ' .. (count > 0 and count + 1 or '') .. 'y')
+end)
+
 map('n', ';', 'q:')
 
 map({'n', 'v'}, '<leader>y', 'y')
