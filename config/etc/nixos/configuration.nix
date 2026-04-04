@@ -113,6 +113,7 @@ in
     qbittorrent
     vlc
     pipx
+    tmux
   ];
 
   environment.etc.vimrc.source = "${config.users.users.valtrois.home}/.dotfiles/config/vim/vimrc";

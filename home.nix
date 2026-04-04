@@ -107,6 +107,12 @@ in
       recursive = true;
       force = true;
     };
+
+    "tmux" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/tmux";
+      recursive = true;
+      force = true;
+    };
   };
 
   programs.git = {
