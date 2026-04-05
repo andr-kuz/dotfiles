@@ -1,6 +1,6 @@
 [submodule "config/tmux/plugins/tmux-continuum"]
 	path = config/tmux/plugins/tmux-continuum
-	url = https://github.com/tmux-plugins/tpm-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
 
 [submodule "config/tmux/plugins/tpm"]
 	path = config/tmux/plugins/tpm
@@ -8,4 +8,4 @@
 
 [submodule "config/tmux/plugins/tmux-resurrect"]
 	path = config/tmux/plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tpm-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
