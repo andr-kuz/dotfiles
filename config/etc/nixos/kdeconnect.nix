@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 let
-  trigger = builtins.pathExists /tmp/kdeconnect.enable;
+  trigger = builtins.pathExists /var/tmp/kdeconnect.enable;
 in
 {
   programs.kdeconnect.enable = trigger;

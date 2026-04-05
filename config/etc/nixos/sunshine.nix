@@ -1,5 +1,5 @@
 let
-  trigger = builtins.pathExists /tmp/sunshine.enable;
+  trigger = builtins.pathExists /var/tmp/sunshine.enable;
 in
 {
   # restart required after re-enabling

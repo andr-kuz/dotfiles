@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-  trigger = builtins.pathExists /tmp/notifications.enable;
+  trigger = builtins.pathExists /var/tmp/notifications.enable;
 in
 {
   environment.systemPackages = with pkgs;
