@@ -1,3 +1,4 @@
 return {
-  'tpope/vim-surround'
+  'kylechui/nvim-surround'
+  -- 'tpope/vim-surround'
 }
