@@ -27,6 +27,7 @@ in
       # ./postgres.nix
       ./docker.nix
       ./kdeconnect.nix
+      ./obs_studio.nix
       (import "${home-manager}/nixos")
     ];
 
