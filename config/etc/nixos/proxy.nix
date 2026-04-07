@@ -21,7 +21,7 @@ in
       Bridge = bridges;
 
       # ExitNodes = "{ru}";
-      # ExcludeNodes = "{de},{us}";
+      ExcludeNodes = "{de}";  # too many yt ads on `de`
 
       # 3. Allow Tor to use other nodes if necessary, but keep StrictNodes 0
       # This means Tor will PREFER to avoid German and US, but if it must, it will try.
