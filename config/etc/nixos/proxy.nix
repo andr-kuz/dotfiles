@@ -11,10 +11,9 @@ let
   else
     "snowflake exec ${pkgs.snowflake}/bin/client";
 in 
-{
+  {
   services.tor = {
     enable = true;
-    client.enable = true;
     settings = {
       UseBridges = true;
       ClientTransportPlugin = plugin;
@@ -34,6 +33,11 @@ in
       KeepAlivePeriod = 300;
       NewCircuitPeriod = 3600;
       MaxCircuitDirtiness = 3600;
+      CookieAuthentication = true;  
+      AvoidDiskWrites = 1; 
+      HardwareAccel = 1;  
+      SafeLogging = 1; 
+      NumCPUs = 3;   
 
       # --- Bandwidth Management ---
       RelayBandwidthRate = "100 MB";
@@ -43,8 +47,14 @@ in
     };
   };
 
-  services.privoxy = {
+  # services.privoxy = {
+  #   enable = true;
+  #   enableTor = true;
+  # };
+
+  # Operating a Snowflake proxy helps others circumvent censorship. Safe to run.
+  services.snowflake-proxy = {
     enable = true;
-    enableTor = true;
+    capacity = 10;
   };
 }
