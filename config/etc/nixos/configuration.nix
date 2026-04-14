@@ -28,6 +28,7 @@ in
       ./docker.nix
       ./kdeconnect.nix
       ./obs_studio.nix
+      ./ydotool.nix
       (import "${home-manager}/nixos")
     ];
 
