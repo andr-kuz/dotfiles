@@ -38,7 +38,6 @@ return {
           end, { 'i', 's' }),
         },
         sources = {
-          { name = 'lazydev', group_index = 0 },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
@@ -47,7 +46,7 @@ return {
     end,
   },
 
-  -- Optional: Keep Mason only for installing tools (not managing LSP config)
+  -- Mason for LSP installation
   {
     'williamboman/mason.nvim',
     cmd = 'Mason',
@@ -60,11 +59,12 @@ return {
     opts = {
       ensure_installed = {
         'lua-language-server',
-        'pyright',
+        'basedpyright',  -- Changed from 'pyright' to 'basedpyright'
         'beancount-language-server',
         'stylua',
         'debugpy',
       },
+      run_on_start = true,
     },
   },
 
@@ -83,68 +83,108 @@ return {
         require('cmp_nvim_lsp').default_capabilities()
       )
 
-      -- Configure LSP servers using the new API
+      -- Configure LSP servers
       vim.lsp.config('lua_ls', {
         capabilities = capabilities,
         settings = {
           Lua = {
             completion = { callSnippet = 'Replace' },
             diagnostics = { globals = { 'vim' } },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+            telemetry = { enable = false },
           },
         },
       })
 
-      vim.lsp.config('pyright', {
+      vim.lsp.config('basedpyright', {  -- Changed from 'pyright'
         capabilities = capabilities,
+        settings = {
+          basedpyright = {  -- Note: settings key matches server name
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = 'workspace',
+              useLibraryCodeForTypes = true,
+              autoImportCompletions = true,
+            },
+          },
+        },
       })
 
       vim.lsp.config('beancount', {
         capabilities = capabilities,
         cmd = { 'beancount-language-server', '--stdio' },
-        root_markers = { '*.beancount', '*.bean' },
+        filetypes = { 'beancount', 'bean' },
+        root_markers = { '.git', '*.beancount', '*.bean' },
         init_options = {
           journal_file = vim.fn.expand('~/finance/main.beancount'),
         },
       })
 
-      -- Enable servers (they'll auto-start when opening matching files)
+      -- Enable servers
       vim.lsp.enable('lua_ls')
-      vim.lsp.enable('pyright')
+      vim.lsp.enable('basedpyright')  -- Changed from 'pyright'
       vim.lsp.enable('beancount')
 
       -- Keymaps on LSP attach
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          local bufnr = event.buf
+
           local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+            vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
           end
 
-          map('<leader>w', vim.diagnostic.open_float, 'Open diagnostic')
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+          map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
+          map('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+          map('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+          map('<leader>ds', vim.lsp.buf.document_symbol, '[D]ocument [S]ymbols')
+          map('<leader>ws', vim.lsp.buf.workspace_symbol, '[W]orkspace [S]ymbols')
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          map('<leader>a', vim.lsp.buf.code_action, 'Code [A]ction')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('<leader>w', vim.diagnostic.open_float, 'Open diagnostic')
+
+          -- Code action with proper context
+          map('<leader>a', function()
+            vim.lsp.buf.code_action({
+              context = {
+                only = {
+                  'quickfix',
+                  'refactor',
+                  'refactor.extract',
+                  'refactor.inline',
+                  'refactor.rewrite',
+                  'source',
+                  'source.organizeImports',
+                },
+              },
+              apply = true,
+            })
+          end, 'Code [A]ction')
 
           -- Document highlight
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-            local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
+          if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            local group = vim.api.nvim_create_augroup('lsp-highlight-' .. bufnr, { clear = true })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
+              buffer = bufnr,
+              group = group,
               callback = vim.lsp.buf.document_highlight,
             })
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
+              buffer = bufnr,
+              group = group,
               callback = vim.lsp.buf.clear_references,
             })
           end
+
+          -- Inlay hints
+          -- if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          --   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+          -- end
         end,
       })
     end,
