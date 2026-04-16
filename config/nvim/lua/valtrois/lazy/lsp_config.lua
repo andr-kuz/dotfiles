@@ -59,7 +59,7 @@ return {
     opts = {
       ensure_installed = {
         'lua-language-server',
-        'basedpyright',  -- Changed from 'pyright' to 'basedpyright'
+        'pyright',
         'beancount-language-server',
         'stylua',
         'debugpy',
@@ -99,10 +99,10 @@ return {
         },
       })
 
-      vim.lsp.config('basedpyright', {  -- Changed from 'pyright'
+      vim.lsp.config('pyright', {  -- Changed from 'pyright'
         capabilities = capabilities,
         settings = {
-          basedpyright = {  -- Note: settings key matches server name
+          pyright = {  -- Note: settings key matches server name
             analysis = {
               autoSearchPaths = true,
               diagnosticMode = 'workspace',
@@ -125,7 +125,7 @@ return {
 
       -- Enable servers
       vim.lsp.enable('lua_ls')
-      vim.lsp.enable('basedpyright')  -- Changed from 'pyright'
+      vim.lsp.enable('pyright')
       vim.lsp.enable('beancount')
 
       -- Keymaps on LSP attach
