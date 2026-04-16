@@ -10,7 +10,7 @@ map({'n', 'v'}, 'y', function()
   vim.cmd('normal! ' .. (count > 0 and count + 1 or '') .. 'y')
 end)
 
-map('n', ';', 'q:')
+map('n', ',', 'q:')
 
 map({'n', 'v'}, '<leader>y', 'y')
 map({'n', 'v'}, '<leader>Y', 'y$')
