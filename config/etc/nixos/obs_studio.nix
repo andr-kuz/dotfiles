@@ -22,4 +22,6 @@ in
       obs-vkcapture
     ];
   };
+
+  environment.systemPackages = pkgs.lib.optional trigger pkgs.obs-cmd;
 }
