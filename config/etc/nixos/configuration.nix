@@ -11,6 +11,7 @@ in
 {
   imports =
     [ # Include the results of the hardware scan.
+      # ./vm.nix
       /etc/nixos/hardware-configuration.nix
       ./proxy.nix
       ./notifications.nix
