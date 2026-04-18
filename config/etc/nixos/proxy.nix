@@ -19,32 +19,11 @@ in
       UseBridges = true;
       ClientTransportPlugin = plugin;
       Bridge = bridges;
-
-      # ExitNodes = "{ru}";
-      # ExcludeNodes = "{de}";  # too many yt ads on `de`
-
-      # 3. Allow Tor to use other nodes if necessary, but keep StrictNodes 0
-      # This means Tor will PREFER to avoid German and US, but if it must, it will try.
-      # If you set StrictNodes 1 and ExcludeNodes us, you might fail to connect
-      # if no other paths exist. Keep it 0 for reliability.
-      StrictNodes = 0;
-
-      # --- Performance Enhancements ---
-      CircuitBuildTimeout = 10;
-      KeepAlivePeriod = 300;
-      NewCircuitPeriod = 3600;
-      MaxCircuitDirtiness = 3600;
-
-      # --- Bandwidth Management ---
-      RelayBandwidthRate = "100 MB";
-      RelayBandwidthBurst = "150 MB";
-      BandwidthRate = "100 MB";
-      BandwidthBurst = "150 MB";
     };
   };
 
   services.privoxy = {
-    enable = true;
-    enableTor = true;
+    enable = false;
+    enableTor = false;
   };
 }
