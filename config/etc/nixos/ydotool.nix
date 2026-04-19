@@ -4,5 +4,6 @@ let
 in
 {
   users.users.valtrois.extraGroups = lib.mkIf trigger [ "ydotool" ];
+  # reboot required
   programs.ydotool.enable = trigger;
 }
