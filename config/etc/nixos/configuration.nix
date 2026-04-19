@@ -13,6 +13,7 @@ in
     [ # Include the results of the hardware scan.
       # ./vm.nix
       /etc/nixos/hardware-configuration.nix
+      ./virtualization.nix
       ./proxy.nix
       ./notifications.nix
       ./internal_ssd.nix

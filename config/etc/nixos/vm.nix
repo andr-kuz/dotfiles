@@ -17,56 +17,70 @@ in
   ];
 
   # ========== PERFORMANCE OPTIMIZATIONS ==========
-  
-  # 1. CPU & KVM Acceleration
+
+  # ========== DISPLAY ==========
+  # Handled at launch time: ~/vm/bin/run-nixos-vm -display gtk,grab-on-hover=on
+  # Do NOT set -display here to avoid conflicts with NixOS defaults.
+
+  # ========== VIRTUALISATION ==========
+  virtualisation = {
+    diskSize = 20480;           # 20 GB
+    memorySize = 8192;          # 8 GB RAM — set explicitly
+    cores = 4;                  # Cleaner than -smp in qemu.options
+
+    qemu = {
+      diskInterface = "virtio";
+
+      options = [
+        "-cpu" "host,topoext"        # topoext exposes AMD topology (important for Zen)
+        "-enable-kvm"
+        "-machine" "q35,accel=kvm"   # q35 is modern, better than i440fx default
+
+        # Display — virtio-gpu is best for AMD host without GPU passthrough
+        "-vga" "none"
+        "-device" "virtio-vga-gl"    # virtio-gpu with OpenGL acceleration
+
+        # SPICE agent for clipboard/resize (remove if using virtio-vga-gl only)
+        "-device" "virtio-serial-pci"
+        "-device" "virtserialport,chardev=spicechannel0,name=com.redhat.spice.0"
+        "-chardev" "spicevmc,id=spicechannel0,name=vdagent"
+
+        # Balloon driver for dynamic memory
+        "-device" "virtio-balloon"
+
+        # Better RNG (avoids entropy starvation)
+        "-object" "rng-random,id=rng0,filename=/dev/urandom"
+        "-device" "virtio-rng-pci,rng=rng0"
+      ];
+
+      # Leave networkingOptions at default — NixOS handles this correctly
+    };
+  };
+
+  # ========== BOOT ==========
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  virtualisation.qemu.options = [
-    "-display" "gtk,grab-on-hover=on"
-
-    "-cpu" "host"           # Pass through host CPU features
-    "-enable-kvm"           # Enable KVM acceleration (critical!)
-    "-smp" "4"              # Allocate multiple CPU cores (adjust to your host)
-    # Graphics
-    "-vga" "virtio"
-
-    # SPICE device
-    "-device" "virtio-serial-pci"
-    "-device" "virtserialport,chardev=spicechannel0,name=com.redhat.spice.0"
-    "-chardev" "spicevmc,id=spicechannel0,name=vdagent"
-  ];
-
-  # 2. Memory - Hugepages support
   boot.kernelParams = [
-    "hugepagesz=1G" 
-    "hugepages=24"          # 24GB of 1GB hugepages (adjust to your RAM)
+    "elevator=none"         # virtio-blk doesn't need an I/O scheduler
+    "console=ttyS0"         # Serial console for debugging if display fails
   ];
 
-  # Required kernel modules for virtio and KVM
-  boot.initrd.kernelModules = [ "virtiofs" "virtio_scsi" ];
+  # Guest kernel modules only — no kvm-amd (that's host-only)
+  boot.initrd.kernelModules = [ "virtio_gpu" "virtio_scsi" "virtio_blk" ];
+  boot.kernelModules = [ "virtio_pci" "virtio_net" ];
 
-  # 3. Power Management - Performance governor
-  powerManagement.cpuFreqGovernor = "performance";
-
-  # 4. QEMU Guest Agent for better integration
+  # ========== GUEST SERVICES ==========
   services.qemuGuest.enable = true;
-
-  # 5. SPICE for better graphics performance
   services.spice-vdagentd.enable = true;
 
-  # 6. Optimize disk I/O - Use virtio-blk with writeback cache
-  virtualisation.diskSize = 20480;  # 20GB disk
-  virtualisation.qemu.diskInterface = "virtio";
+  # ========== CPU GOVERNOR ==========
+  powerManagement.cpuFreqGovernor = "performance";
 
-  # 7. Optimize network with virtio
-  virtualisation.qemu.networkingOptions = [
-    "-netdev" "user,id=net0"
-    "-device" "virtio-net-pci,netdev=net0"
-  ];
+  # ========== VIDEO ACCELERATION IN GUEST ==========
+  hardware.graphics.enable = true;
 
   # ========== THE REST ==========
-  boot.kernelModules = [ "virtiofs" "kvm-amd" "vfio" "vfio_iommu_type1" ];
 
   users.users.${username} = {
     isNormalUser = true;
