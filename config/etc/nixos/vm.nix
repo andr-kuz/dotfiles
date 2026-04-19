@@ -109,7 +109,7 @@ in
 
   environment.shellAliases = {
     vim = "nvim --listen /tmp/nvim.pipe -c 'set paste'";
-    src = "source .venv/bin/acrivate";
+    src = "source .venv/bin/activate";
   };
 
   environment.systemPackages = with pkgs; [ 
