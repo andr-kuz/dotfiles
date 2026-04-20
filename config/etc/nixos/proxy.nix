@@ -23,7 +23,7 @@ in
   };
 
   services.privoxy = {
-    enable = false;
-    enableTor = false;
+    enable = true;
+    enableTor = true;
   };
 }
