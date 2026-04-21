@@ -129,7 +129,7 @@ in
 
       programs.kitty.enable = true;
       programs.kitty.settings = {
-        font_size="9.0";
+        font_size="12.0";
         cursor_trail="1";
         cursor_trail_start_threshold="0";
         cursor_trail_decay="0.05 0.1";
