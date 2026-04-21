@@ -100,6 +100,15 @@ in
     };
   };
 
+  programs.neovim = {
+    enable = true;
+
+    extraLuaConfig = ''
+      vim.opt.swapfile = false
+      vim.opt.backup = false
+    '';
+  };
+
   virtualisation.sharedDirectories = {
     host-projects = {
       source = "/home/valtrois/videos";
@@ -113,7 +122,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [ 
-    neovim
     curl 
     git 
     kitty
