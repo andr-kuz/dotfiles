@@ -1,7 +1,7 @@
 # # uncomment this when official NixOS Telegram package updates to >= 6.7.5
 # { lib, pkgs, ... }:
 # let
-#   trigger = builtins.pathExists /tmp/telegram.enable;
+#   trigger = builtins.pathExists /var/tmp/telegram.enable;
 # in
 # {
 #   environment.systemPackages = with pkgs;
