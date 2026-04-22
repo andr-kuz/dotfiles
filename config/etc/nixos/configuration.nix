@@ -23,6 +23,7 @@ in
       ./kanata.nix
       ./sunshine.nix
       ./telegram.nix
+      ./audacity.nix
       # ./waydroid.nix
       # ./android-adb.nix
       # ./httptoolkit.nix
