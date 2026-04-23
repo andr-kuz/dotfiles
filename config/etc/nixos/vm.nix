@@ -40,6 +40,8 @@ in
         "-vga" "none"
         "-device" "virtio-vga-gl"    # virtio-gpu with OpenGL acceleration
 
+        "-display" "gtk,gl=on,grab-on-hover=off"
+
         # SPICE agent for clipboard/resize (remove if using virtio-vga-gl only)
         "-device" "virtio-serial-pci"
         "-device" "virtserialport,chardev=spicechannel0,name=com.redhat.spice.0"
