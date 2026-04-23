@@ -125,6 +125,7 @@ in
     curl 
     git 
     kitty
+    google-chrome
     python3
     python3Packages.pip
   ];
