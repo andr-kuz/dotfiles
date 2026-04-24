@@ -15,6 +15,7 @@ in
       /etc/nixos/hardware-configuration.nix
       ./virtualization.nix
       ./proxy.nix
+      ./kdenlive.nix
       ./notifications.nix
       ./internal_ssd.nix
       ./16_microsd_music.nix
