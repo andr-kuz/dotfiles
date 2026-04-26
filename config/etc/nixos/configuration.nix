@@ -15,6 +15,7 @@ in
       /etc/nixos/hardware-configuration.nix
       ./virtualization.nix
       ./proxy.nix
+      ./sox.nix
       ./kdenlive.nix
       ./notifications.nix
       ./internal_ssd.nix
