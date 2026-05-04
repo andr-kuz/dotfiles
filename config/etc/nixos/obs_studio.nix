@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   trigger = builtins.pathExists /var/tmp/obs-studio.enable;
 in
-{
+lib.mkIf trigger {
   programs.obs-studio = {
-    enable = trigger;
+    enable = true;
 
     # optional Nvidia hardware acceleration
     # package = (
@@ -23,5 +23,7 @@ in
     ];
   };
 
-  environment.systemPackages = pkgs.lib.optional trigger pkgs.obs-cmd;
+  environment.systemPackages = [ 
+      pkgs.obs-cmd 
+    ];
 }

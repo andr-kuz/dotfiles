@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-{
+{ lib, ... }:
+let
+  trigger = builtins.pathExists /dev/disk/by-uuid/d42532f8-b3ba-4f3b-ab3b-be47dc732a07;
+in
+lib.mkIf trigger {
   fileSystems."/mnt/external" = {
     device = "/dev/disk/by-uuid/d42532f8-b3ba-4f3b-ab3b-be47dc732a07";
     fsType = "ext4";

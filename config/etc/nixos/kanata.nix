@@ -1,11 +1,11 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 let
   trigger = builtins.pathExists /var/tmp/kanata.enable;
 in
-{
-  users.users.valtrois.extraGroups = lib.mkIf trigger [ "uinput" ];
+lib.mkIf trigger {
+  users.users.valtrois.extraGroups = [ "uinput" ];
   services.kanata = {
-    enable = trigger;
+    enable = true;
     keyboards = {
       valtrois = {
         configFile = "${/home/valtrois/.dotfiles/kanata/kanata.kbd}";

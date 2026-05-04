@@ -1,3 +1,4 @@
+# sudo mount -t vfat /dev/disk/by-label/DR-05X /mnt/tascam_dr_05x_recorder
 { config, pkgs, ... }:
 
 {

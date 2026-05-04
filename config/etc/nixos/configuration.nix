@@ -10,30 +10,31 @@ in
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      # ./vm.nix
+    [
+      # ./16_microsd_music.nix
+      # ./tascam_dr_05x_recorder.nix
+      # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
       ./virtualization.nix
       ./proxy.nix
-      ./sox.nix
+      ./reaper_daw.nix
+      ./audio.nix  # we want to put this below `daw` so it won't override
+      ./audacity.nix
+      ./sox_cli_audio_tools.nix
       ./kdenlive.nix
       ./notifications.nix
       ./internal_ssd.nix
-      ./16_microsd_music.nix
-      ./tascam_dr_05x_recorder.nix
-      ./audio.nix
       ./kanata.nix
       ./sunshine.nix
       ./telegram.nix
-      ./audacity.nix
-      # ./waydroid.nix
-      # ./android-adb.nix
-      # ./httptoolkit.nix
-      # ./postgres.nix
+      ./waydroid.nix
+      ./android-adb.nix
+      ./httptoolkit.nix
       ./docker.nix
       ./kdeconnect.nix
       ./obs_studio.nix
       ./ydotool.nix
+      ./zsh.nix
       (import "${home-manager}/nixos")
     ];
 
@@ -88,21 +89,6 @@ in
   programs.neovim.defaultEditor = true;
   programs.steam.enable = true;
   programs.nix-ld.enable = true;  # allows to run unpatched binaries
-  programs.zsh = {
-    enable = true;
-    # Optional Zsh features
-    enableBashCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    # Source the Powerlevel10k theme
-    promptInit = ''
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      # Load your p10k configuration file if it exists
-      [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-    '';
-  };
-  users.users.valtrois.shell = pkgs.zsh;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -116,7 +102,7 @@ in
     })
     wget
     p7zip
-    blueberry
+    blueman
     qbittorrent
     vlc
     pipx

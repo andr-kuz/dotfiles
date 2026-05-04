@@ -3,7 +3,9 @@
 let
   trigger = builtins.pathExists /var/tmp/sox.enable;
 in
-{
+lib.mkIf trigger {
   environment.systemPackages = with pkgs;
-    lib.optional trigger sox;
+    [
+      sox
+    ];
 }

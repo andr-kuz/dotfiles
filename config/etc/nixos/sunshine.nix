@@ -1,10 +1,11 @@
+{ lib, ... }:
 let
   trigger = builtins.pathExists /var/tmp/sunshine.enable;
 in
-{
+lib.mkIf trigger {
   # restart required after re-enabling
   services.sunshine = {
-    enable = trigger;
+    enable = true;
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-{
+{ lib, pkgs, ... }:
+let
+  trigger = builtins.pathExists /var/tmp/docker.enable;
+in
+lib.mkIf trigger {
   virtualisation.docker = {
     enable = true;
     rootless = {

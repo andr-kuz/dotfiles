@@ -3,8 +3,8 @@
 let
   trigger = builtins.pathExists /var/tmp/kdeconnect.enable;
 in
-{
-  programs.kdeconnect.enable = trigger;
+lib.mkIf trigger {
+  programs.kdeconnect.enable = true;
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
   ];

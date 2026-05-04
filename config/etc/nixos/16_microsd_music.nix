@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+# sudo mount -t exfat /dev/disk/by-uuid/BAA5-3096 /mnt/BAA5-3096
+{ ... }:
 
 {
   fileSystems."/mnt/16_microsd_music" = {

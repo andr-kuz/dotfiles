@@ -2,8 +2,8 @@
 let
   trigger = builtins.pathExists /var/tmp/ydotool.enable;
 in
-{
-  users.users.valtrois.extraGroups = lib.mkIf trigger [ "ydotool" ];
+lib.mkIf trigger {
+  users.users.valtrois.extraGroups = [ "ydotool" ];
   # reboot required
-  programs.ydotool.enable = trigger;
+  programs.ydotool.enable = true;
 }
