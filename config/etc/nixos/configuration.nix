@@ -17,6 +17,7 @@ in
       /etc/nixos/hardware-configuration.nix
       ./virtualization.nix
       ./proxy.nix
+      ./tor_routing.nix
       ./reaper_daw.nix
       ./audio.nix  # we want to put this below `daw` so it won't override
       ./audacity.nix
