@@ -10,6 +10,7 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
+vim.opt.autoindent = true  -- copy indent from the current line
 vim.opt.clipboard = 'unnamedplus'
 
 -- restrict vim from hiding some markup symbols like `__text__` in markdown files
