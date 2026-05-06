@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 alias v="nvim"
-alias vim="nvim --listen /tmp/nvim.pipe -c 'set paste'"
+alias vim="nvim --listen /tmp/nvim.pipe -c 'set paste' -c 'lua require('\\''cmp'\\'').setup({ completion = { autocomplete = false } })' -c 'lua vim.diagnostic.config({ virtual_text = false, float = false })'"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
