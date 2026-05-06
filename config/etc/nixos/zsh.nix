@@ -1,8 +1,6 @@
 { lib, pkgs, ... }:
-let
-  trigger = builtins.pathExists /var/tmp/zsh.enable;
-in
-lib.mkIf trigger {
+
+{
   programs.zsh = {
     enable = true;
     # Optional Zsh features

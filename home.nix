@@ -42,7 +42,7 @@ in
     python3
     fzf
     ripgrep
-    vital
+    # vital
   ];
   home.activation.myUserScript = ''
     ${pkgs.rustup}/bin/rustup default stable # set rust defaul channel
