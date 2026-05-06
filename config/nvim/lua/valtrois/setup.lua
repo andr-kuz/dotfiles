@@ -2,8 +2,9 @@ vim.cmd("colorscheme sorbet")
 vim.cmd("highlight Normal guibg=NONE")
 vim.cmd("highlight NormalFloat guibg=NONE") -- for floating windows
 
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -11,6 +12,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true  -- copy indent from the current line
+
 vim.opt.clipboard = 'unnamedplus'
 
 -- restrict vim from hiding some markup symbols like `__text__` in markdown files
@@ -26,23 +28,43 @@ vim.opt.updatetime = 200
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+vim.opt.autochdir = false  -- don't auto change directory
+
 -- adds syntax errors etc
 vim.diagnostic.config({ virtual_text = true })
 
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = vim.api.nvim_create_augroup('HighlightYank', {})
+local augroup = vim.api.nvim_create_augroup('UserConfig', {})
 
 autocmd('TextYankPost', {
-    group = yank_group,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 80,
-        })
-    end,
+  group = augroup,
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 80,
+    })
+  end,
 })
 
+-- Auto-resize splits when window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+  group = augroup,
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
+})
+
+-- Create directories when saving files
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup,
+  callback = function()
+    local dir = vim.fn.expand('<afile>:p:h')
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, 'p')
+    end
+  end,
+})
 
 -- This needs for a 'Pocco81/auto-save.nvim' plugin not conflict with a 'epwalsh/obsidian.nvim' plugin when you undo
 vim.cmd[[autocmd TextChanged,FocusLost,BufEnter * if &buftype ==# '' || &buftype == 'acwrite' | silent update | endif]]
