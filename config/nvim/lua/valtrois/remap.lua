@@ -62,12 +62,12 @@ map('n', '<leader>q', 'q', { noremap = true, silent = true })
 -- treat ctrl-c as esc
 vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>', { noremap = true, silent = true })
 
-vim.api.nvim_create_autocmd('BufEnter', {
-    pattern = "*.md",
-    callback = function()
-        -- Only set the mappings if they don't exist already
-        local opts = { buffer = true, noremap = true, desc = 'Insert > on the line start in markdown and return back to `x` mark' }
-        vim.keymap.set('n', '>', 'mxI> <Esc>`xll', opts)
-        vim.keymap.set('n', '<', 'mxI> <Esc>`xll', opts)
-    end
-})
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--     pattern = "*.md",
+--     callback = function()
+--         -- Only set the mappings if they don't exist already
+--         local opts = { buffer = true, noremap = true, desc = 'Insert > on the line start in markdown and return back to `x` mark' }
+--         vim.keymap.set('n', '>', 'mxI> <Esc>`xll', opts)
+--         vim.keymap.set('n', '<', 'mxI> <Esc>`xll', opts)
+--     end
+-- })
