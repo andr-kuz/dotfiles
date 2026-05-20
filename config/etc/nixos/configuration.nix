@@ -36,6 +36,7 @@ in
       ./obs_studio.nix
       ./ydotool.nix
       ./zsh.nix
+      ./wine.nix
       (import "${home-manager}/nixos")
     ];
 
