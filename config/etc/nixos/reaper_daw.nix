@@ -6,9 +6,8 @@ in
 lib.mkIf trigger {
   environment.systemPackages = with pkgs; [
     reaper
-    yabridge  # for Windows VSTs 
-    carla     # plugin host
-    vital     # Spectral warping wavetable synth
+    yabridge    # for Windows VSTs 
+    yabridgectl # yabridgectl add ~/Audio/vsts && yabridge sync && yabridgectl status
   ];
 
   # Enable Realtime Audio Permissions
