@@ -8,6 +8,7 @@ lib.mkIf trigger {
     reaper
     yabridge  # for Windows VSTs 
     carla     # plugin host
+    vital     # Spectral warping wavetable synth
   ];
 
   # Enable Realtime Audio Permissions
