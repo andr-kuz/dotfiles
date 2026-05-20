@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-wine.url = "github:NixOS/nixpkgs/8311011fcea909e0cc9684ada784dae080fbfb60"; 
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, nixpkgs-wine, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -22,8 +23,8 @@
         # the path to your home.nix.
         modules = [ ./home.nix ];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        # 2. This passes 'nixpkgs-wine' as a variable into your home.nix
+        extraSpecialArgs = { inherit nixpkgs-wine; }; 
       };
     };
 }

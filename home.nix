@@ -1,12 +1,14 @@
 { 
   config
   , pkgs
+  , nixpkgs-wine
   #, homeDirectory
   #, username
   , ...
 }:
 
 let
+  wine921 = nixpkgs-wine.legacyPackages."x86_64-linux".wineWowPackages.staging;
   myGithub = "andr-kuz";
 in
 
@@ -20,6 +22,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+    wine921
     wl-clipboard
     google-chrome
     kitty
