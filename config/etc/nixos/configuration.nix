@@ -109,6 +109,7 @@ in
     vlc
     pipx
     tmux
+    tree-sitter
   ];
 
   environment.etc.vimrc.source = "${config.users.users.valtrois.home}/.dotfiles/config/vim/vimrc";
