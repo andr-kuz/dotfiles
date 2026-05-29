@@ -13,6 +13,9 @@ let
 in
 
 {
+  imports = [
+    ./config/etc/nixos/reaper_home.nix # Path relative to this home.nix file
+  ];
   #home = {
     #inherit homeDirectory username;
   #};
