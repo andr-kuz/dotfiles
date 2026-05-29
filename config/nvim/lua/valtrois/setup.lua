@@ -94,3 +94,13 @@ vim.filetype.add({
 })
 
 vim.g.netrw_banner = 0  -- disable file explorer banner
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.tabstop = 2      -- Visual width of a tab
+    vim.opt_local.shiftwidth = 2   -- Size of an indent
+    vim.opt_local.softtabstop = 2  -- Number of spaces inserted in insert mode
+    vim.opt_local.expandtab = true -- Convert tabs to spaces
+  end,
+})
