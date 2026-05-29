@@ -1,6 +1,7 @@
 { 
   config
   , pkgs
+  , inputs
   #, homeDirectory
   #, username
   , ...
@@ -19,6 +20,10 @@ in
   home.homeDirectory = "/home/valtrois";
 
   nixpkgs.config.allowUnfree = true;
+  imports = [
+    ./programs/nvim.nix
+  ];
+
   home.packages = with pkgs; [
     wl-clipboard
     google-chrome
@@ -29,21 +34,9 @@ in
     hypridle
     hyprpaper
     hyprshot
-    neovim
-    # neovim plugins requirements
-    nodejs
-    yarn
-    gcc
-    clang-tools
-    pyright
-    rustup
-    unzip
-    libxkbfile
-    python3
-    fzf
-    ripgrep
     # vital
   ];
+
   home.activation.myUserScript = ''
     ${pkgs.rustup}/bin/rustup default stable # set rust defaul channel
   '';
@@ -91,12 +84,6 @@ in
   };
 
   xdg.configFile = {
-    "nvim" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/nvim";
-      recursive = true;
-      force = true;
-    };
-
     "hypr" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/hypr";
       recursive = true;
