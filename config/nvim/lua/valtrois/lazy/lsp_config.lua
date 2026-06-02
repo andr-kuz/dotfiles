@@ -60,7 +60,6 @@ return {
       ensure_installed = {
         'lua-language-server',
         'pyright',
-        'beancount-language-server',
         'stylua',
         'debugpy',
       },
@@ -113,20 +112,9 @@ return {
         },
       })
 
-      vim.lsp.config('beancount', {
-        capabilities = capabilities,
-        cmd = { 'beancount-language-server', '--stdio' },
-        filetypes = { 'beancount', 'bean' },
-        root_markers = { '.git', '*.beancount', '*.bean' },
-        init_options = {
-          journal_file = vim.fn.expand('~/finance/main.beancount'),
-        },
-      })
-
       -- Enable servers
       vim.lsp.enable('lua_ls')
       vim.lsp.enable('pyright')
-      vim.lsp.enable('beancount')
 
       -- Keymaps on LSP attach
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -167,7 +155,7 @@ return {
           end, 'Code [A]ction')
 
           -- Document highlight
-          if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+          if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local group = vim.api.nvim_create_augroup('lsp-highlight-' .. bufnr, { clear = true })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = bufnr,
