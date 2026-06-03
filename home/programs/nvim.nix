@@ -10,6 +10,7 @@ in
     chosenNeovim
     
     # neovim plugins requirements
+    pkgs.tree-sitter
     pkgs.nodejs
     pkgs.yarn
     pkgs.gcc
