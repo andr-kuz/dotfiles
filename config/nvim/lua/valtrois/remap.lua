@@ -29,8 +29,8 @@ map({'n', 'x'}, 'c', '"_c')
 map({'n', 'n'}, 'C', '"_C')
 map({'n', 'x'}, '<leader>d', 'd')
 
-map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 map('n', '<leader>t', '<Cmd>horizontal terminal<CR>i')
 
