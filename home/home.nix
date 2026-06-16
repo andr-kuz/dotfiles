@@ -22,6 +22,7 @@ in
   nixpkgs.config.allowUnfree = true;
   imports = [
     ./programs/nvim.nix
+    ./programs/yazi.nix
   ];
 
   home.packages = with pkgs; [
