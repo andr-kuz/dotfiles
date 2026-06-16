@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "neoscroll.nvim": {
+      "rev": "c8d29979cb0cb3a2437a8e0ae683fd82f340d3b8",
+      "src": "https://github.com/karb94/neoscroll.nvim"
+    }
+  }
+}

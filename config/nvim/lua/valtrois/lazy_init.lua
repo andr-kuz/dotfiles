@@ -12,6 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  spec = 'valtrois.lazy',
+  spec = 'valtrois.lazy_plugins_deprecated',
   change_detection = { notify = false }
 })
