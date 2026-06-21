@@ -1,6 +1,6 @@
 vim.cmd("colorscheme sorbet")
-vim.cmd("highlight Normal guibg=NONE")
-vim.cmd("highlight NormalFloat guibg=NONE") -- for floating windows
+-- vim.cmd("highlight Normal guibg=NONE") -- inherits terminal window transparency
+-- vim.cmd("highlight NormalFloat guibg=NONE") -- transparency for floating windows
 
 vim.opt.number = true
 vim.opt.relativenumber = true
