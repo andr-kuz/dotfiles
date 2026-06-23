@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+bindkey -e  # emacs-like controls
 alias v="nvim"
 alias vim="nvim --listen /tmp/nvim.pipe -c 'set paste' -c 'lua require('\\''cmp'\\'').setup({ completion = { autocomplete = false } })' -c 'lua vim.diagnostic.config({ virtual_text = false, float = false })' -c 'set signcolumn=no'"
 
