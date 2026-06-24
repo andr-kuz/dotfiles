@@ -15,6 +15,7 @@ in
       # ./tascam_dr_05x_recorder.nix
       # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./zapret.nix
       ./warp.nix
       ./virtualization.nix
       ./proxy.nix
