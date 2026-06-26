@@ -11,7 +11,7 @@ lib.mkIf trigger {
       "--dpi-desync-autottl=2"
       "--dpi-desync-fooling=md5sig"
       "--new"
-      "--filter-tcp=443"
+      "--filter-tcp=443 ˂HOSTLIST˃"
       "--dpi-desync=fake,multidisorder"
       "--dpi-desync-fooling=badseq"
       "--dpi-desync-split-pos=midsld"
