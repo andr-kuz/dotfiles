@@ -6,12 +6,12 @@ lib.mkIf trigger {
   services.zapret = {
     enable = true;
     params = [
-      "--filter-tcp=80 ˂HOSTLIST˃"
+      "--filter-tcp=80"
       "--dpi-desync=fake,fakedsplit"
       "--dpi-desync-autottl=2"
       "--dpi-desync-fooling=md5sig"
       "--new"
-      "--filter-tcp=443 ˂HOSTLIST˃"
+      "--filter-tcp=443"
       "--dpi-desync=fake,multidisorder"
       "--dpi-desync-fooling=badseq"
       "--dpi-desync-split-pos=midsld"
