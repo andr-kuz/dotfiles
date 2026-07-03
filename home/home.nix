@@ -23,6 +23,7 @@ in
   imports = [
     ./programs/nvim.nix
     ./programs/yazi.nix
+    ./programs/qbittorrent.nix
   ];
 
   home.packages = with pkgs; [

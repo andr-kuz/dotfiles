@@ -108,7 +108,6 @@ in
     wget
     p7zip
     blueman
-    qbittorrent
     vlc
     pipx
     tmux
