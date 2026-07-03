@@ -49,7 +49,7 @@ lib.mkIf trigger {
 
       # Security features to prevent ISP leaks
       force_tcp = true; # Encrypted protocols use TCP/HTTPS ports
-        cache = true;
+      cache = true;
     };
   };
 
