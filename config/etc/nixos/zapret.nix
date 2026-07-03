@@ -44,11 +44,10 @@ lib.mkIf trigger {
     enable = true;
     settings = {
     # Choose fast, non-logging, encrypted upstream providers
-      server_names = [ "cloudflare" "quad9-dnscrypt-ip4-filter-pri" ];
+      server_names = [ "cloudflare" ];
       listen_addresses = [ "127.0.0.1:53" "[::1]:53" ];
 
       # Security features to prevent ISP leaks
-      force_tcp = true; # Encrypted protocols use TCP/HTTPS ports
       cache = true;
     };
   };
