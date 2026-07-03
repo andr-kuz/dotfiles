@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-trigger = builtins.pathExists /var/tmp/zapret.enable;
+  trigger = builtins.pathExists /var/tmp/zapret.enable;
 in
 lib.mkIf trigger {
   services.zapret = {
