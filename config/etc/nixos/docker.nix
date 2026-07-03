@@ -15,4 +15,8 @@ lib.mkIf trigger {
   environment.systemPackages = with pkgs; [
     docker-compose
   ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "docker-28.5.2"
+  ];
 }
