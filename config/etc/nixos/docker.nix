@@ -5,10 +5,7 @@ in
 lib.mkIf trigger {
   virtualisation.docker = {
     enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
+    rootless.enable = false;
   };
   users.users.valtrois.extraGroups = [ "docker" ];
 
