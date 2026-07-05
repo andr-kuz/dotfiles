@@ -4,7 +4,7 @@ let
 in
 lib.mkIf trigger {
   environment.systemPackages = with pkgs; [
-    wineWow64Packages.stable
+    wineWowPackages.stable
     winetricks
   ];
 }
