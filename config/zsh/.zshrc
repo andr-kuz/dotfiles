@@ -29,3 +29,6 @@ select-word-style bash
 WORDCHARS=""
 
 source "$HOME/.bash_functions"
+
+# Created by `pipx` on 2026-07-06 12:02:30
+export PATH="$PATH:/home/valtrois/.local/bin"
