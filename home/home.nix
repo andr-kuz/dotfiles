@@ -24,6 +24,7 @@ in
     ./programs/nvim.nix
     ./programs/yazi.nix
     ./programs/qbittorrent.nix
+    ./programs/brightnessctl.nix
   ];
 
   home.packages = with pkgs; [
