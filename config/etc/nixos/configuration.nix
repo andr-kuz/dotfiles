@@ -31,7 +31,6 @@ in
       ./internal_ssd.nix
       ./kanata.nix
       ./sunshine.nix
-      ./telegram.nix
       ./waydroid.nix
       ./android-adb.nix
       ./httptoolkit.nix

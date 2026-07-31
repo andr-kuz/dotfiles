@@ -4,7 +4,7 @@ let
 in
 
 lib.mkIf trigger {
-    environment.systemPackages = with pkgs; [
-      telegram-desktop
-    ];
+  home.packages = with pkgs; [
+    telegram-desktop
+  ];
 }
