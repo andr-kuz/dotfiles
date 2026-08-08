@@ -15,6 +15,7 @@ in
       # ./tascam_dr_05x_recorder.nix
       # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./wifi_disable.nix
       ./telegram_mtu.nix
       ./openrgb.nix
       ./tlp.nix
