@@ -1,2 +1,4 @@
 [alias]
     amnd = !git commit --amend --no-edit
+[core]
+	quotepath = false
