@@ -27,6 +27,7 @@ in
     ./programs/qbittorrent.nix
     ./programs/brightnessctl.nix
     ./programs/obsidian.nix
+    ./programs/rnote.nix
   ];
 
   home.packages = with pkgs; [
