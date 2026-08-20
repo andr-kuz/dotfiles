@@ -26,6 +26,7 @@ in
     ./programs/yazi.nix
     ./programs/qbittorrent.nix
     ./programs/brightnessctl.nix
+    ./programs/obsidian.nix
   ];
 
   home.packages = with pkgs; [
