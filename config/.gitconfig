@@ -2,3 +2,14 @@
     amnd = !git commit --amend --no-edit
 [core]
 	quotepath = false
+
+[init]
+	defaultBranch = "master"
+
+[user]
+	email = "awakum192@gmail.com"
+	name = "awakum"
+
+[branch "master"]
+    remote = origin
+    rebase = true

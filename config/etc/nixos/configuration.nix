@@ -42,6 +42,7 @@ in
       ./ydotool.nix
       ./zsh.nix
       ./wine.nix
+      ./proxychains.nix
       (import "${home-manager}/nixos")
     ];
 
