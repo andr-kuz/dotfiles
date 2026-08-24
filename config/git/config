@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = "master"
+
+[user]
+	email = "awakum192@gmail.com"
+	name = "awakum"
+
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+    rebase = true
