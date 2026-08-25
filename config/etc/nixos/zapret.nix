@@ -6,9 +6,6 @@ lib.mkIf trigger {
   services.zapret = {
     enable = true;
     params = [
-      "--subnet-lan4=192.168.1.0/24"
-      "--dont-desync-lan"
-
       "--filter-tcp=80"
       "--dpi-desync=fake,fakedsplit"
       "--dpi-desync-autottl=2"
