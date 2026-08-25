@@ -43,6 +43,7 @@ in
       ./zsh.nix
       ./wine.nix
       ./proxychains.nix
+      ./yggdrasil.nix
       (import "${home-manager}/nixos")
     ];
 
@@ -140,7 +141,12 @@ in
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # `sudo nft list ruleset` rules check
+  services.openssh = {
+    enable = true;
+    # change default port
+    ports = [ 2352 ];
+  };
 
   services.logind.settings.Login = {
     HandlePowerKey="suspend";
