@@ -1,3 +1,4 @@
+duckdns_config.nix
 lazy-lock.json
 proxy_config.nix
 *.lock
