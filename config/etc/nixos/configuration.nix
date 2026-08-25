@@ -15,6 +15,7 @@ in
       # ./tascam_dr_05x_recorder.nix
       # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./ssh.nix
       ./dyndns.nix
       ./wifi_disable.nix
       ./telegram_mtu.nix
@@ -138,16 +139,6 @@ in
   };
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true;
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # `sudo nft list ruleset` rules check
-  services.openssh = {
-    enable = true;
-    # change default port
-    ports = [ 2352 ];
-  };
 
   services.logind.settings.Login = {
     HandlePowerKey="suspend";
