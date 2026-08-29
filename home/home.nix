@@ -76,6 +76,9 @@ in
   };
 
   home.file = {
+    ".config/yazi/keymap.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/yazi/keymap.toml";
+    };
     ".zshenv" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/zsh/.zshenv";
     };
