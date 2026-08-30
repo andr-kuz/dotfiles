@@ -60,6 +60,7 @@ nixos-rebuild switch
 
 # Run nix command as the original user
 echo "Running home-manager init as user $ORIGINAL_USER..."
-sudo -u "$ORIGINAL_USER" nix run home-manager/release-25.11 -- init --switch --impure "$ORIGINAL_HOME/.dotfiles/home/"
+sudo -u "$ORIGINAL_USER" nix flake update --flake "$ORIGINAL_HOME/.dotfiles/home/"
+sudo -u "$ORIGINAL_USER" nix run github:nix-community/home-manager -- switch --impure --flake "$ORIGINAL_HOME/.dotfiles/home/#valtrois"
 sed -i.bak -E 's/# battery([[:space:]]+)# internal battery/battery\1  # internal battery/' "$ORIGINAL_HOME/.p10k.zsh"
 rm "$ORIGINAL_HOME/.p10k.zsh.bak"

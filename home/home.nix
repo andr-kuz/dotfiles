@@ -15,7 +15,7 @@ in
   #home = {
     #inherit homeDirectory username;
   #};
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
   home.username = "valtrois";
   home.homeDirectory = "/home/valtrois";
 
