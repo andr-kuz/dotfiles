@@ -1,5 +1,26 @@
 #!/usr/bin/env bash
 
+# 1. Parse arguments first (before root checks, so -h/--help works safely)
+UPDATE_MODE=false
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -u|--update)
+      UPDATE_MODE=true
+      shift
+      ;;
+    -h|--help)
+      echo "Usage: sudo $0 [-u|--update]"
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Usage: sudo $0 [-u|--update]"
+      exit 1
+      ;;
+  esac
+done
+
 # Check if the script is run as root (sudo)
 if [ "$EUID" -ne 0 ]; then
     echo "Please run this script with sudo"
@@ -56,11 +77,21 @@ else
     echo "Done!"
 fi
 
+# 2. Conditional Channel Update
+if [ "$UPDATE_MODE" = true ]; then
+    echo "🔄 Updating Nix channels..."
+    nix-channel --update
+fi
+
 nixos-rebuild switch
 
 # Run nix command as the original user
 echo "Running home-manager init as user $ORIGINAL_USER..."
-sudo -u "$ORIGINAL_USER" nix flake update --flake "$ORIGINAL_HOME/.dotfiles/home/"
+
+# 3. Conditional Flake Update
+if [ "$UPDATE_MODE" = true ]; then
+    echo "🔄 Updating home flake inputs..."
+    sudo -u "$ORIGINAL_USER" nix flake update --flake "$ORIGINAL_HOME/.dotfiles/home/"
+fi
+
 sudo -u "$ORIGINAL_USER" nix run github:nix-community/home-manager -- switch --impure --flake "$ORIGINAL_HOME/.dotfiles/home/#valtrois"
-sed -i.bak -E 's/# battery([[:space:]]+)# internal battery/battery\1  # internal battery/' "$ORIGINAL_HOME/.p10k.zsh"
-rm "$ORIGINAL_HOME/.p10k.zsh.bak"
