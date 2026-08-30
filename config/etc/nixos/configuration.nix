@@ -15,6 +15,7 @@ in
       # ./tascam_dr_05x_recorder.nix
       # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./copyq.nix
       ./ssh.nix
       ./dyndns.nix
       ./wifi_disable.nix
@@ -138,7 +139,7 @@ in
     };
   };
   programs.hyprland.enable = true;
-  programs.hyprland.xwayland.enable = true;
+  # programs.hyprland.xwayland.enable = true;
 
   services.logind.settings.Login = {
     HandlePowerKey="suspend";
