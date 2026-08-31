@@ -12,11 +12,6 @@ end)
 
 map('n', ',', 'q:')
 
-map({'n', 'v'}, '<leader>y', 'y')
-map({'n', 'v'}, '<leader>Y', 'y$')
-map({'n', 'v'}, 'y', '"+y', { desc = 'Yank to system clipboard' })
-map({'n', 'v'}, 'Y', '"+y$', { desc = 'Yank line to system clipboard' })
-
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
