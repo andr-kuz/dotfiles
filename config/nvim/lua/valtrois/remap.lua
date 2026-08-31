@@ -4,12 +4,6 @@ local map = vim.keymap.set
 
 map('i', '<C-a>', '<C-o>a', { noremap = true, silent = true })
 
-map({'n', 'v'}, 'y', function()
-  -- increments `y` number argument by one
-  local count = vim.v.count
-  vim.cmd('normal! ' .. (count > 0 and count + 1 or '') .. 'y')
-end)
-
 map('n', ',', 'q:')
 
 map("n", "<C-d>", "<C-d>zz")
@@ -21,7 +15,7 @@ map({'n', 'x'}, 'd', '"_d')
 map({'n', 'x'}, 'D', '"_D')
 map({'n', 'x'}, 'x', '"_x')
 map({'n', 'x'}, 'c', '"_c')
-map({'n', 'n'}, 'C', '"_C')
+map({'n', 'x'}, 'C', '"_C')
 map({'n', 'x'}, '<leader>d', 'd')
 
 -- map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
