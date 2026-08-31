@@ -2,8 +2,10 @@ vim.cmd("colorscheme sorbet")
 -- vim.cmd("highlight Normal guibg=NONE") -- inherits terminal window transparency
 -- vim.cmd("highlight NormalFloat guibg=NONE") -- transparency for floating windows
 
-vim.opt.number = true
+vim.opt.number = false
 vim.opt.relativenumber = true
+-- relativenumber starts with `2`
+vim.opt.statuscolumn = "%= %{v:relnum == 0 ? v:lnum : (v:relnum + 1)} "
 vim.opt.cursorline = true
 
 vim.opt.tabstop = 2
