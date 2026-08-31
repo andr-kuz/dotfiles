@@ -18,7 +18,7 @@ vim.opt.autoindent = true  -- copy indent from the current line
 vim.opt.clipboard = 'unnamedplus'
 
 -- restrict vim from hiding some markup symbols like `__text__` in markdown files
-vim.opt.conceallevel = 1
+vim.opt.conceallevel = 2
 
 vim.opt.swapfile = false
 vim.opt.backup = false
