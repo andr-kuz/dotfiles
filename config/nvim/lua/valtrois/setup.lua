@@ -5,7 +5,7 @@ vim.cmd("colorscheme sorbet")
 vim.opt.number = false
 vim.opt.relativenumber = true
 -- relativenumber starts with `2`
-vim.opt.statuscolumn = "%= %{v:relnum == 0 ? v:lnum : (v:relnum + 1)} "
+vim.opt.statuscolumn = "%s%= %{v:relnum == 0 ? v:lnum : (v:relnum + 1)} "
 vim.opt.cursorline = true
 
 vim.opt.tabstop = 2
