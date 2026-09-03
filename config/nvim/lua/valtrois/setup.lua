@@ -2,10 +2,10 @@ vim.cmd("colorscheme sorbet")
 -- vim.cmd("highlight Normal guibg=NONE") -- inherits terminal window transparency
 -- vim.cmd("highlight NormalFloat guibg=NONE") -- transparency for floating windows
 
-vim.opt.number = false
+vim.opt.number = true
 vim.opt.relativenumber = true
 -- relativenumber starts with `2`
-vim.opt.statuscolumn = "%s%= %{v:relnum == 0 ? v:lnum : (v:relnum + 1)} "
+-- vim.opt.statuscolumn = "%s%= %{v:relnum == 0 ? v:lnum : (v:relnum + 1)} "
 vim.opt.cursorline = true
 
 vim.opt.tabstop = 2
@@ -113,3 +113,14 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
         end
     end,
 })
+
+vim.api.nvim_create_user_command('Zen', function()
+  if vim.wo.number then
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+    vim.wo.signcolumn = 'no'
+    vim.opt.cursorline = false
+    vim.opt.statuscolumn = ''
+    vim.cmd('colorscheme zellner')
+  end
+end, {})
