@@ -87,6 +87,7 @@ in
     layout = "us";
     variant = "";
   };
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
   services.udisks2.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
