@@ -7,7 +7,7 @@ lib.mkIf trigger {
   programs.proxychains = {
     enable = true;
     package = pkgs.proxychains-ng; # Uses proxychains-ng by default
-    chain.type = "strict";       # Options: strict, dynamic, random
+    chain.type = "dynamic";       # Options: strict, dynamic, random
     proxies = {
       myproxy = {
         enable = true;
