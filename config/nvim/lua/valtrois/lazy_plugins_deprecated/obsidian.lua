@@ -13,6 +13,9 @@ return {
     'nvim-lua/plenary.nvim',
   },
   opts = {
+    daily_notes = {
+      date_format = "%d-%m-%Y",
+    },
     workspaces = {
       {
         name = 'personal',
