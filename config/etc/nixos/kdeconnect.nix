@@ -9,9 +9,9 @@ let
 
     src = pkgs.fetchFromGitHub {
       owner = "gfhdhytghd";
-      repo = "hypr-kdeconnect-fix";
-      rev = "master"; # or specific commit hash
-      sha256 = "sha256-VcXxVtlnkPjO6l0ky/n+0qa87Uc3c8hRM0twfgl+AiM="; # replace with actual hash
+      repo = "hypr-kdeconnect-fix";  # https://github.com/gfhdhytghd/hypr-kdeconnect-fix
+      rev = "0bc47e676ae2d6964cec4020be9966bbe85985e6";  # or 'master'
+      sha256 = "sha256-s8hWpEIyWpwW9w8t80Byqp+8jG0ChddtbDB7eJ/7ebA=";
     };
 
     nativeBuildInputs = with pkgs; [
