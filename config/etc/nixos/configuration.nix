@@ -15,6 +15,7 @@ in
       # ./tascam_dr_05x_recorder.nix
       # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./temp_26.05_fix.nix
       ./brightnessmonitor.nix
       ./cache.nix
       ./copyq.nix
