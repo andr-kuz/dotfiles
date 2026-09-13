@@ -142,7 +142,8 @@ in
       user = "valtrois";
     };
   };
-  programs.hyprland.enable = true;
+  programs.niri.enable = true;
+  # programs.hyprland.enable = true;
   # programs.hyprland.xwayland.enable = true;
 
   services.logind.settings.Login = {

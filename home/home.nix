@@ -33,7 +33,8 @@ in
   home.packages = with pkgs; [
     wl-clipboard
     google-chrome
-    kitty
+    alacritty
+    fuzzel
     wofi
     zsh-powerlevel10k
     meslo-lgs-nf  # Powerlevel10k icon font
@@ -93,6 +94,12 @@ in
   };
 
   xdg.configFile = {
+    "niri" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/niri";
+      recursive = true;
+      force = true;
+    };
+
     "hypr" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/hypr";
       recursive = true;
