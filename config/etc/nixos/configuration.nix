@@ -124,6 +124,7 @@ in
     pipx
     tmux
     tree-sitter
+    xwayland-satellite
   ];
 
   environment.etc.vimrc.source = "${config.users.users.valtrois.home}/.dotfiles/config/vim/vimrc";
