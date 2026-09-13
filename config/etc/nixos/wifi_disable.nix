@@ -9,7 +9,7 @@ lib.mkIf trigger {
     before = [ "network.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.util-linux}/bin/rfkill block wifi";
+      ExecStart = "${pkgs.networkmanager}/bin/nmcli radio wifi off";
       RemainAfterExit = true;
     };
   };
