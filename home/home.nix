@@ -21,6 +21,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   imports = [
+    ./programs/waybar.nix
     ./programs/telegram.nix
     ./programs/nvim.nix
     ./programs/yazi.nix
