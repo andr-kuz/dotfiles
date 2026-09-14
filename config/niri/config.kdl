@@ -7,6 +7,10 @@
 // Find the full list of options on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Input
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "hypridle"
+spawn-at-startup "hyprpaper"
+spawn-at-startup "kdeconnect-indicator"
+spawn-at-startup "env QT_QPA_PLATFORM=xcb copyq --start-server"
 
 input {
     keyboard {
