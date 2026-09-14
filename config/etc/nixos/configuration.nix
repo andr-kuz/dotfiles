@@ -3,18 +3,12 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
-let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz;
-in
-
 {
   imports =
     [
+      # Include the results of the hardware scan.
       # ./16_microsd_music.nix
       # ./tascam_dr_05x_recorder.nix
-      # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
       ./temp_26.05_fix.nix
       ./brightnessmonitor.nix
       ./cache.nix
@@ -50,7 +44,6 @@ in
       ./wine.nix
       ./proxychains.nix
       ./yggdrasil.nix
-      (import "${home-manager}/nixos")
     ];
 
   # Bootloader.
@@ -166,4 +159,8 @@ in
   system.stateVersion = "25.11"; # Did you read the comment?
   hardware.bluetooth.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users."valtrois" = import ./home/home.nix;
 }
