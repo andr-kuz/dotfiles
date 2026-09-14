@@ -25,13 +25,13 @@ in
     ./programs/telegram.nix
     ./programs/nvim.nix
     ./programs/yazi.nix
-    ./programs/qbittorrent.nix
     ./programs/brightnessctl.nix
     ./programs/obsidian.nix
     ./programs/rnote.nix
   ];
 
   home.packages = with pkgs; [
+    qbittorrent
     wl-clipboard
     google-chrome
     alacritty
