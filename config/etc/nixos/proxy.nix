@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 
 let
-  vars = import ./proxy_config.nix;
-  bridges = vars.bridges;
+  env = builtins.fromTOML (builtins.readFile ./env.toml);
+  bridges = lib.splitString "," env.TOR_TUNNELS;
   first_bridge = builtins.elemAt bridges 0;
   plugin = if (lib.hasPrefix "obfs4" first_bridge) then
     "obfs4 exec ${pkgs.obfs4}/bin/lyrebird"
