@@ -69,4 +69,7 @@ if [ "$UPDATE_MODE" = true ]; then
     nix flake update
 fi
 
-nixos-rebuild switch --flake .
+# excluding env.toml so we're not indexing any changes in there
+git add --intent-to-add ./config/etc/nixos/env.toml
+# use --impure if you need to allow absolute path import like `/etc/nixos/hardware-configuration.nix`
+nixos-rebuild switch --flake . --impure
