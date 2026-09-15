@@ -1,7 +1,4 @@
+require('valtrois.lazy_init')
 require('valtrois.remap')
 require('valtrois.setup')
-require('valtrois.lazy_init')
-require('valtrois.plugin_setup')
-require('valtrois.plugin_remap')
 require('valtrois.snippets')
-require('valtrois.plugins')
