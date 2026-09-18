@@ -145,10 +145,10 @@
   };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 3724 8085 ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -159,6 +159,7 @@
   system.stateVersion = "25.11"; # Did you read the comment?
   hardware.bluetooth.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = ["root" "valtrois"];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
