@@ -10,6 +10,7 @@ lib.mkIf trigger {
     settings = {
       IfName = "ygg0";
       Peers = [
+        "tcp://ygg-msk-1.averyan.ru:8363"
         "tcp://89.44.86.85:65535"
       ];
     };
