@@ -35,6 +35,7 @@ in
     ./programs/brightnessctl.nix
     ./programs/obsidian.nix
     ./programs/rnote.nix
+    ./programs/discord.nix
   ];
 
   home.packages = with pkgs; [

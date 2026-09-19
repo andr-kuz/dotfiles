@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 let
   trigger = builtins.pathExists /var/tmp/zapret.enable;
 in

@@ -6,9 +6,7 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
-      # ./16_microsd_music.nix
-      # ./tascam_dr_05x_recorder.nix
+      ./zapret_discord.nix
       ./temp_26.05_fix.nix
       ./brightnessmonitor.nix
       ./cache.nix
