@@ -1,4 +1,5 @@
+require('valtrois.initial_setup')
+require('valtrois.lazy_init')
 require('valtrois.remap')
 require('valtrois.setup')
 require('valtrois.snippets')
-require('valtrois.lazy_init')
