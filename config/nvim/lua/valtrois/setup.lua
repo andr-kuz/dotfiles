@@ -126,7 +126,7 @@ vim.api.nvim_create_user_command('CreatePaddings', function(args)
   end
 
   -- create new buffs
-  local width = 10
+  local width = 5
   if args.fargs and #args.fargs > 0 then
     width = tonumber(args.fargs[1]) or width
   end
@@ -165,7 +165,7 @@ end, {
 })
 
 vim.api.nvim_create_user_command('Zen', function(args)
-  local width = 10
+  local width = 5
   if args.fargs and #args.fargs > 0 then
     width = tonumber(args.fargs[1]) or width
   end
