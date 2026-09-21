@@ -114,6 +114,31 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
     end,
 })
 
+vim.api.nvim_create_user_command('CreatePadding', function(args)
+  local side = 'left'
+  local width = 10
+
+  if args.fargs and #args.fargs > 0 then
+    side = args.fargs[1]
+    if args.fargs[2] then
+      width = tonumber(args.fargs[2]) or 10
+    end
+  end
+
+  local direction = (side == 'right') and 'rightbelow' or 'leftabove'
+
+  vim.cmd(direction .. ' ' .. width .. 'vnew')
+  vim.cmd('setlocal bufhidden=wipe buftype=nofile noswapfile')
+
+  if side == 'right' then
+    vim.cmd('wincmd h')
+  else
+    vim.cmd('wincmd l')
+  end
+end, {
+  nargs = '*',
+})
+
 vim.api.nvim_create_user_command('Zen', function()
   if vim.wo.number then
     vim.wo.number = false
@@ -123,6 +148,8 @@ vim.api.nvim_create_user_command('Zen', function()
     vim.opt.statuscolumn = ''
     vim.cmd('colorscheme zellner')
     vim.o.foldcolumn = '5'
+    vim.cmd('CreatePadding left 10')
+    vim.cmd('CreatePadding right 10')
   end
 end, {})
 
