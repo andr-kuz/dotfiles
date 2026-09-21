@@ -137,6 +137,9 @@ vim.api.nvim_create_user_command('CreatePaddings', function(args)
     local pad_win = vim.api.nvim_get_current_win()
     vim.w[pad_win].is_padding = true
     vim.cmd('setlocal bufhidden=wipe buftype=nofile noswapfile winfixwidth')
+    vim.cmd('set nonumber')
+    vim.cmd('set norelativenumber')
+    vim.cmd('set laststatus=0')
 
     vim.api.nvim_create_autocmd("WinEnter", {
       callback = function(_)
