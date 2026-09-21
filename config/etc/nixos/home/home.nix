@@ -115,6 +115,12 @@ in
       force = true;
     };
 
+    "alacritty" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/alacritty";
+      recursive = true;
+      force = true;
+    };
+
     "kitty" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/kitty";
       recursive = true;
