@@ -114,44 +114,86 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
     end,
 })
 
-vim.api.nvim_create_user_command('CreatePadding', function(args)
-  local side = 'left'
-  local width = 10
+vim.api.nvim_create_user_command('CreatePaddings', function(args)
+  -- close old flagged buffs first
+  local current_tab = vim.api.nvim_get_current_tabpage()
+  local wins = vim.api.nvim_tabpage_list_wins(current_tab)
 
-  if args.fargs and #args.fargs > 0 then
-    side = args.fargs[1]
-    if args.fargs[2] then
-      width = tonumber(args.fargs[2]) or 10
+  for _, win in ipairs(wins) do
+    if vim.api.nvim_win_is_valid(win) and vim.w[win].is_padding then
+      vim.api.nvim_win_close(win, true)
     end
   end
 
-  local direction = (side == 'right') and 'rightbelow' or 'leftabove'
+  -- create new buffs
+  local width = 10
+  if args.fargs and #args.fargs > 0 then
+    width = tonumber(args.fargs[1]) or width
+  end
 
-  vim.cmd(direction .. ' ' .. width .. 'vnew')
-  vim.cmd('setlocal bufhidden=wipe buftype=nofile noswapfile')
+  for _, side in ipairs({'left', 'right'}) do
+    local direction = (side == 'right') and 'rightbelow' or 'leftabove'
+    vim.cmd(direction .. ' ' .. width .. 'vnew')
+    local pad_win = vim.api.nvim_get_current_win()
+    vim.w[pad_win].is_padding = true
+    vim.cmd('setlocal bufhidden=wipe buftype=nofile noswapfile winfixwidth')
 
-  if side == 'right' then
-    vim.cmd('wincmd h')
-  else
-    vim.cmd('wincmd l')
+    vim.api.nvim_create_autocmd("WinEnter", {
+      callback = function(_)
+        if not vim.api.nvim_win_is_valid(pad_win) then
+          return true
+        end
+
+        if vim.api.nvim_get_current_win() == pad_win then
+          if side == 'right' then
+            vim.cmd('wincmd h')
+          else
+            vim.cmd('wincmd l')
+          end
+        end
+      end,
+    })
+
+    if side == 'right' then
+      vim.cmd('wincmd h')
+    else
+      vim.cmd('wincmd l')
+    end
   end
 end, {
   nargs = '*',
 })
 
-vim.api.nvim_create_user_command('Zen', function()
+vim.api.nvim_create_user_command('Zen', function(args)
+  local width = 10
+  if args.fargs and #args.fargs > 0 then
+    width = tonumber(args.fargs[1]) or width
+  end
+  print(width)
+  vim.cmd('CreatePaddings ' .. width)
+
   if vim.wo.number then
     vim.wo.number = false
     vim.wo.relativenumber = false
     vim.wo.signcolumn = 'no'
     vim.opt.cursorline = false
     vim.opt.statuscolumn = ''
-    vim.cmd('colorscheme zellner')
-    vim.o.foldcolumn = '5'
-    vim.cmd('CreatePadding left 10')
-    vim.cmd('CreatePadding right 10')
+    vim.cmd('colorscheme retrobox')
+    vim.cmd('highlight WinSeparator guibg=NONE guifg=NONE')
+    vim.opt.fillchars = {
+      vert = ' ',
+      horiz = ' ',
+      horizup = ' ',
+      horizdown = ' ',
+      vertleft = ' ',
+      vertright = ' ',
+      verthoriz = ' ',
+      eob = ' ',
+    }
   end
-end, {})
+end, {
+  nargs = '*',
+})
 
 local function escape(str)
   -- You need to escape these characters to work correctly
