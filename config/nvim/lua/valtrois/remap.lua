@@ -1,5 +1,8 @@
 local map = vim.keymap.set
 
+map('n', '<C-j>', 'gj')
+map('n', '<C-k>', 'gk')
+
 map('i', '<C-a>', '<C-o>a', { noremap = true, silent = true })
 
 map('n', ',', 'q:')
