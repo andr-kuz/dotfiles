@@ -36,6 +36,7 @@ in
     ./programs/obsidian.nix
     ./programs/rnote.nix
     ./programs/discord.nix
+    ./programs/kew.nix
   ];
 
   home.packages = with pkgs; [
