@@ -6,6 +6,14 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Input
+
+// Enabling accessibility
+
+// // these 3 are commented out until `hints` fixes `niri` non top-left window bug
+// spawn-at-startup "busctl --user set-property org.a11y.Bus /org/a11y/bus org.a11y.Status IsEnabled b true"
+// spawn-at-startup "sh" "-c" "sleep 1 && AT_SPI_BUS_ADDRESS=$(busctl --user call org.a11y.Bus /org/a11y/bus org.a11y.Bus GetAddress | cut -d' ' -f2 | tr -d '\"')"
+// spawn-at-startup "sh" "-c" "ACCESSIBILITY_ENABLED=1"
+
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "hypridle"
 spawn-at-startup "hyprpaper"
@@ -367,6 +375,7 @@ binds {
     //
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
+    Mod+Space { spawn-sh "hints -v"; }
     Mod+BracketLeft  { spawn-sh "copyq previous"; }
     Mod+BracketRight { spawn-sh "copyq next"; }
     Mod+P { spawn-sh "copyq toggle"; }
