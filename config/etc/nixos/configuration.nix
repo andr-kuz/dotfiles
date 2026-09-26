@@ -6,6 +6,7 @@
 {
   imports =
     [
+      ./hints.nix
       ./zapret_discord.nix
       ./temp_26.05_fix.nix
       ./brightnessmonitor.nix

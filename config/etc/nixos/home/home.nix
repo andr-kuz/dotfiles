@@ -41,9 +41,10 @@ in
   ];
 
   home.packages = with pkgs; [
+    # (pkgs.google-chrome.override { commandLineArgs = [ "--force-renderer-accessibility" ]; })  # commented out until `hints` fixes `niri` non top-left window bug
+    google-chrome
     qbittorrent
     wl-clipboard
-    google-chrome
     alacritty
     fuzzel
     wofi
