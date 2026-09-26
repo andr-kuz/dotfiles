@@ -1,0 +1,12 @@
+# Global settings
+font=JetBrains Mono 10
+background-color=#2e3440
+text-color=#d8dee9
+border-color=#88c0d0
+border-size=2
+default-timeout=5000
+
+# Specific criteria blocks
+[urgency=high]
+border-color=#bf616a
+default-timeout=0

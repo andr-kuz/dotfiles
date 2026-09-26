@@ -28,6 +28,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   imports = [
+    ./programs/mako.nix
     ./programs/waybar.nix
     ./programs/telegram.nix
     ./programs/nvim.nix
@@ -86,6 +87,9 @@ in
   };
 
   home.file = {
+    ".config/mako/config" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/mako/config";
+    };
     ".config/yazi/keymap.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/yazi/keymap.toml";
     };
