@@ -14,6 +14,7 @@
 // spawn-at-startup "sh" "-c" "sleep 1 && AT_SPI_BUS_ADDRESS=$(busctl --user call org.a11y.Bus /org/a11y/bus org.a11y.Bus GetAddress | cut -d' ' -f2 | tr -d '\"')"
 // spawn-at-startup "sh" "-c" "ACCESSIBILITY_ENABLED=1"
 
+spawn-at-startup "copyq"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "hypridle"
 spawn-at-startup "hyprpaper"
