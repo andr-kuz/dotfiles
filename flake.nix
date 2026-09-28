@@ -5,13 +5,15 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = { 
     nixpkgs, 
     home-manager, 
+    neovim-nightly-overlay,
     ... 
-  }:
+  }@inputs:
     let
       system = "x86_64-linux";
     in {
@@ -21,6 +23,7 @@
         ./config/etc/nixos/configuration.nix
         /etc/nixos/hardware-configuration.nix
         home-manager.nixosModules.home-manager
+        { home-manager.extraSpecialArgs = { inherit inputs; }; }
       ];
     };
   };
