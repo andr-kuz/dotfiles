@@ -1,16 +1,19 @@
 local map = vim.keymap.set
 
+-- map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map('i', '<C-j>', '<C-o>gj')
+map('i', '<C-k>', '<C-o>gk')
+map('i', '<C-h>', '<Left>')
+map('i', '<C-l>', '<Right>')
 map('n', '<C-j>', 'gj')
 map('n', '<C-k>', 'gk')
+map('n', '<C-h>', 'h')
+map('n', '<C-l>', 'l')
 
 map('i', '<C-a>', '<C-o>a', { noremap = true, silent = true })
 
 map('n', ',', 'q:')
-
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
 
 map({'n', 'x'}, 'd', '"_d')
 map({'n', 'x'}, 'D', '"_D')
@@ -18,9 +21,6 @@ map({'n', 'x'}, 'x', '"_x')
 map({'n', 'x'}, 'c', '"_c')
 map({'n', 'x'}, 'C', '"_C')
 map({'n', 'x'}, '<leader>d', 'd')
-
--- map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
--- map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 map('n', '<leader>t', '<Cmd>horizontal terminal<CR>i')
 
