@@ -1,10 +1,11 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, inputs, ... }:
 
 let
   triggerRegular = builtins.pathExists /var/tmp/nvim.enable;
   triggerNightly = builtins.pathExists /var/tmp/nvim_nightly.enable;
-  neovim-nightly = "github:nix-community/neovim-nightly-overlay";
-  chosenNeovim = if triggerNightly then neovim-nightly else pkgs.neovim;
+  chosenNeovim = if triggerNightly 
+    then inputs.neovim-nightly-overlay.packages.${pkgs.system}.default 
+    else pkgs.neovim;
   trigger = triggerNightly || triggerRegular;
 in
 lib.mkIf trigger
