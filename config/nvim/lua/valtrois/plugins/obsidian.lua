@@ -12,9 +12,7 @@ return {
   },
   opts = {
     link = {
-      -- https://github.com/obsidian-nvim/obsidian.nvim/pull/787
-      -- wait for 3.17.0 for this to work
-      -- check with `:Lazy C` (check)
+      -- you need to start typing ling with `[[` anyway
       style = "markdown",
     },
     daily_notes = {
