@@ -119,13 +119,14 @@ vim.api.nvim_create_user_command('CreatePaddings', function(args)
 
   for _, side in ipairs({'left', 'right'}) do
     local direction = (side == 'right') and 'rightbelow' or 'leftabove'
+    local width = (side == 'left') and width - 3 or width
     vim.cmd(direction .. ' ' .. width .. 'vnew')
     local pad_win = vim.api.nvim_get_current_win()
     vim.w[pad_win].is_padding = true
     vim.cmd('setlocal bufhidden=wipe buftype=nofile noswapfile winfixwidth')
     vim.cmd('set nonumber')
     vim.cmd('set norelativenumber')
-    vim.cmd('set laststatus=0')
+    -- vim.cmd('set laststatus=0')
 
     vim.api.nvim_create_autocmd("WinEnter", {
       callback = function(_)
@@ -162,11 +163,11 @@ vim.api.nvim_create_user_command('Zen', function(args)
   vim.cmd('CreatePaddings ' .. width)
 
   if vim.wo.number then
-    vim.wo.number = false
-    vim.wo.relativenumber = false
     vim.wo.signcolumn = 'no'
     vim.opt.cursorline = false
-    vim.opt.statuscolumn = ''
+    -- vim.opt.statuscolumn = ''
+    -- vim.wo.number = false
+    -- vim.wo.relativenumber = false
     vim.cmd('colorscheme retrobox')
     vim.cmd('highlight WinSeparator guibg=NONE guifg=NONE')
     vim.opt.fillchars = {
