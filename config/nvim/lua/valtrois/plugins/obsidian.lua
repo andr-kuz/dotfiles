@@ -33,10 +33,13 @@ return {
       func = function(note)
         -- This is equivalent to the default frontmatter function.
         local created = require("utils.time").get_zettel_timestamp()
-        local out = { aliases = note.aliases, tags = note.tags, created = created}
+        local out = { aliases = note.aliases, tags = note.tags }
         -- `note.metadata` contains any manually added fields in the frontmatter.
         -- So here we just make sure those fields are kept in the frontmatter.
         if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+          if note.metadata['updated'] == nil then
+            out['created'] = created
+          end
           for k, v in pairs(note.metadata) do
             out[k] = v
           end
