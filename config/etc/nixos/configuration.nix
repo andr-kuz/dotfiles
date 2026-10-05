@@ -160,7 +160,6 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["root" "valtrois"];
 
-  home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users."valtrois" = import ./home/home.nix;
 }
