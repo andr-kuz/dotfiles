@@ -165,9 +165,9 @@ vim.api.nvim_create_user_command('Zen', function(args)
   if vim.wo.number then
     vim.wo.signcolumn = 'no'
     vim.opt.cursorline = false
-    -- vim.opt.statuscolumn = ''
-    -- vim.wo.number = false
-    -- vim.wo.relativenumber = false
+    vim.opt.statuscolumn = ''
+    vim.wo.number = false
+    vim.wo.relativenumber = false
     vim.cmd('colorscheme retrobox')
     vim.cmd('highlight WinSeparator guibg=NONE guifg=NONE')
     vim.opt.fillchars = {
