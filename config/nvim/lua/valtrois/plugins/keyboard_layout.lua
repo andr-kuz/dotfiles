@@ -1,6 +1,7 @@
 return {
-  -- 'andr-kuz/xkbswitch.nvim',
-  -- config = function()
-  --   require('xkbswitch').setup()
-  -- end
+  'andr-kuz/xkbswitch.nvim',
+  enabled = false,
+  config = function()
+    require('xkbswitch').setup()
+  end
 }
