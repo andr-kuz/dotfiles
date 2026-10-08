@@ -119,7 +119,7 @@ vim.api.nvim_create_user_command('CreatePaddings', function(args)
 
   for _, side in ipairs({'left', 'right'}) do
     local direction = (side == 'right') and 'rightbelow' or 'leftabove'
-    local width = (side == 'left') and width - 3 or width
+    -- local width = (side == 'left') and width - 3 or width
     vim.cmd(direction .. ' ' .. width .. 'vnew')
     local pad_win = vim.api.nvim_get_current_win()
     vim.w[pad_win].is_padding = true
