@@ -52,7 +52,6 @@ in
     meslo-lgs-nf  # Powerlevel10k icon font
     hypridle
     hyprpaper
-    hyprshot
     # vital
   ];
 
