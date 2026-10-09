@@ -10,7 +10,6 @@
       ./zapret_discord.nix
       ./temp_26.05_fix.nix
       ./brightnessmonitor.nix
-      ./cache.nix
       ./copyq.nix
       ./ssh.nix
       ./dyndns.nix
