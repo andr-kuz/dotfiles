@@ -18,7 +18,6 @@
       ./openrgb.nix
       ./tlp.nix
       ./zapret.nix
-      ./warp.nix
       ./virtualization.nix
       ./proxy.nix
       ./tor_routing.nix
