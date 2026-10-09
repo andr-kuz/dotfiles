@@ -7,7 +7,10 @@ let
   trigger = builtins.pathExists /var/tmp/brightnessmonitor.enable;
 in
 {
-  boot.kernelModules = [ "i2c-dev" ];
+  boot.kernelModules = [ 
+    "i2c-dev" 
+    "amdgpu.dcfeaturemask=0"  # a temporary fix while new kernel enables unsupported AMD features
+  ];
   hardware.i2c.enable = true;
   users.users.valtrois.extraGroups = [ "i2c" ];
   environment.systemPackages = [
