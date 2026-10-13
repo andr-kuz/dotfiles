@@ -1,6 +1,6 @@
 return {
   'Wansmer/langmapper.nvim',
-  enabled = true,
+  enabled = false,
   lazy = false,  -- priority option is for non-lazy plugins only
   priority = 999, -- High priority is needed if you will use `autoremap()`
   config = function()
