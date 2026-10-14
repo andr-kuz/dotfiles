@@ -1,1 +1,1 @@
--- require('langmapper').automapping({ global = true, buffer = true })
+require('langmapper').automapping({ global = true, buffer = true })
