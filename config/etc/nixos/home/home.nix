@@ -28,6 +28,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   imports = [
+    ./programs/kdenlive.nix
     ./programs/krita.nix
     ./programs/mako.nix
     ./programs/waybar.nix

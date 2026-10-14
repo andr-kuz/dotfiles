@@ -25,7 +25,6 @@
       ./audio.nix  # we want to put this below `daw` so it won't override
       ./audacity.nix
       ./sox_cli_audio_tools.nix
-      ./kdenlive.nix
       ./notifications.nix
       ./internal_ssd.nix
       ./kanata.nix
