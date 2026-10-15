@@ -28,6 +28,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   imports = [
+    ./programs/hypridle.nix
     ./programs/kdenlive.nix
     ./programs/krita.nix
     ./programs/mako.nix
@@ -51,7 +52,6 @@ in
     wofi
     zsh-powerlevel10k
     meslo-lgs-nf  # Powerlevel10k icon font
-    hypridle
     hyprpaper
     hyprlock
     # vital
