@@ -16,7 +16,6 @@
 
 spawn-at-startup "copyq"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "hypridle"
 spawn-at-startup "hyprpaper"
 spawn-at-startup "kdeconnect-indicator"
 // fixes telegram desktop -> chrome keyring compatibility like
