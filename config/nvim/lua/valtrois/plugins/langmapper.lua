@@ -6,24 +6,24 @@ return {
   config = function()
     local langmapper = require('langmapper')
     langmapper.setup({
-    -- in case I need this
-    --   layouts = {
-    --     ru = {
-    --       ---@type string Name of your second keyboard layout in system.
-    --       ---It should be the same as result string of `get_current_layout_id()`
-    --       id = '1',
-    --     },
-    --   },
-    --   os = {
-    --     -- Linux, the result of `vim.loop.os_uname().sysname`
-    --     Linux = {
-    --       ---@return string
-    --       get_current_layout_id = function()
-    --         local output = vim.fn.system('niri msg keyboard-layouts')
-    --         return output:match('%*%s+(%d+)')
-    --       end,
-    --     },
-    --   },
+      -- setup is optional but it fixes plugins like autopairs shortcuts
+      layouts = {
+        ru = {
+          ---@type string Name of your second keyboard layout in system.
+          ---It should be the same as result string of `get_current_layout_id()`
+          id = '1',
+        },
+      },
+      os = {
+        -- Linux, the result of `vim.loop.os_uname().sysname`
+        Linux = {
+          ---@return string
+          get_current_layout_id = function()
+            local output = vim.fn.system('niri msg keyboard-layouts')
+            return output:match('%*%s+(%d+)')
+          end,
+        },
+      },
     })
   end,
 }
