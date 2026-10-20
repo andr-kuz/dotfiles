@@ -20,6 +20,13 @@ lib.mkIf trigger {
       # Optional helps save long term battery health
       START_CHARGE_THRESH_BAT0 = 70; # 40 and below it starts to charge
       STOP_CHARGE_THRESH_BAT0 = 95; # 80 and above it stops charging
+
+      # this will probably fix network issues
+      WIFI_PWR_ON_AC = "off";
+      WIFI_PWR_ON_BAT = "off";
+      PCIE_ASPM_ON_AC = "performance";
+      PCIE_ASPM_ON_BAT = "performance";
+      NET_CONFIG_ON_RTC = "off";
     };
   };
 }
