@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "hints": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788098387,
+        "narHash": "sha256-Sf70W6UgirzrIq8/Dlz7/ahbBQTo60a7mJh1OB3xGJQ=",
+        "owner": "DemyCode",
+        "repo": "hints",
+        "rev": "aae93d31642adb85bcfa477df2e49bea9be4635e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DemyCode",
+        "repo": "hints",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -128,6 +148,7 @@
     },
     "root": {
       "inputs": {
+        "hints": "hints",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
