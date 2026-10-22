@@ -376,6 +376,7 @@ binds {
     //
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
+    Mod+W { spawn-sh "pkill -SIGUSR1 waybar"; }
     Mod+Space { spawn-sh "hints -v"; }
     Mod+BracketLeft  { spawn-sh "copyq previous"; }
     Mod+BracketRight { spawn-sh "copyq next"; }
@@ -627,7 +628,7 @@ binds {
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
-    Mod+W { toggle-column-tabbed-display; }
+    // Mod+W { toggle-column-tabbed-display; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
