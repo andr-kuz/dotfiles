@@ -13,7 +13,17 @@ alias vim="nvim --listen /tmp/nvim.pipe -c 'set paste' -c 'lua require('\\''cmp'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-plugins=(git battery)
+autoload -Uz edit-command-line
+zle -N edit-command-line
+# Trigger with Ctrl+X followed by Ctrl+E while in regular mode
+bindkey '^X^E' edit-command-line
+# Trigger with 'v' while in vi-mode Normal mode
+bindkey -M vicmd 'v' edit-command-line
+
+plugins=(
+  git 
+  battery
+)
 #
 # setopt promptsubst
 # RPROMPT='$(battery_pct_prompt)'
