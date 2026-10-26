@@ -6,6 +6,7 @@
 {
   imports =
     [
+      ./ollama.nix
       ./thinkpad.nix
       ./hints.nix
       ./zapret_discord.nix
