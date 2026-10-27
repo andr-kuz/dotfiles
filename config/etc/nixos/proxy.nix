@@ -19,6 +19,12 @@ in
       UseBridges = true;
       ClientTransportPlugin = plugin;
       Bridge = bridges;
+      # Открываем SOCKS-порт с изоляцией
+      SocksPort = "127.0.0.1:9050 IPv6Traffic PreferIPv6 KeepAliveIsolateSOCKSAuth";
+      # Обязательно для работы Tor Browser
+      ControlPort = "127.0.0.1:9051"; 
+      CookieAuthentication = true;
+      CookieAuthFileGroupReadable = true;
     };
   };
 
@@ -26,4 +32,6 @@ in
     enable = true;
     enableTor = true;
   };
+
+  users.users.valtrois.extraGroups = [ "tor" ];
 }

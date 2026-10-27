@@ -28,6 +28,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   imports = [
+    ./programs/tor_browser.nix
     ./programs/hypridle.nix
     ./programs/kdenlive.nix
     ./programs/krita.nix
