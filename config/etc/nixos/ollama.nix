@@ -3,6 +3,13 @@ let
   trigger = builtins.pathExists /var/tmp/ollama.enable;
 in
 lib.mkIf trigger {
+  # chatGPT-like local LLM chat
+  services.open-webui = {
+    enable = true;
+    port = 3000;
+    host = "127.0.0.1";
+  };
+
   # 1. Настройка сервиса Ollama под видеокарты AMD
   services.ollama = {
     enable = true;
