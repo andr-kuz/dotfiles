@@ -11,6 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    yazi-overlay.url = "github:sxyazi/yazi";
   };
 
   outputs = { 
@@ -18,6 +19,7 @@
     home-manager, 
     neovim-nightly-overlay,
     hints,
+    yazi-overlay,
     ... 
   }@inputs:
     let
