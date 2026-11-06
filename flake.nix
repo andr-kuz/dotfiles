@@ -12,6 +12,7 @@
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     yazi-overlay.url = "github:sxyazi/yazi";
+    krita-overlay.url = "github:NixOS/nixpkgs/nixos-25.11";
   };
 
   outputs = { 
@@ -20,6 +21,7 @@
     neovim-nightly-overlay,
     hints,
     yazi-overlay,
+    krita-overlay,
     ... 
   }@inputs:
     let
