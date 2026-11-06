@@ -48,7 +48,7 @@ in
     (pkgs.google-chrome.override { commandLineArgs = [ "--force-renderer-accessibility" ]; })
     qbittorrent
     wl-clipboard
-    alacritty
+    kitty
     fuzzel
     wofi
     zsh-powerlevel10k
