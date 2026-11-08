@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 let
   trigger = builtins.pathExists /var/tmp/obs-studio.enable;
+  env = builtins.fromTOML (builtins.readFile ../env.toml);
 in
 lib.mkIf trigger {
   programs.obs-studio = {
@@ -15,10 +16,8 @@ lib.mkIf trigger {
 
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs
-      obs-backgroundremoval
       obs-pipewire-audio-capture
       obs-vaapi #optional AMD hardware acceleration
-      obs-gstreamer
       obs-vkcapture
     ];
   };
