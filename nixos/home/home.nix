@@ -28,20 +28,21 @@ in
 
   nixpkgs.config.allowUnfree = true;
   imports = [
-    ./programs/tor_browser.nix
-    ./programs/hypridle.nix
-    ./programs/kdenlive.nix
-    ./programs/krita.nix
-    ./programs/mako.nix
-    ./programs/waybar.nix
-    ./programs/telegram.nix
-    ./programs/nvim.nix
-    ./programs/yazi.nix
-    ./programs/brightnessctl.nix
-    ./programs/obsidian.nix
-    ./programs/rnote.nix
-    ./programs/discord.nix
-    ./programs/kew.nix
+    ./obs_studio.nix
+    ./tor_browser.nix
+    ./hypridle.nix
+    ./kdenlive.nix
+    ./krita.nix
+    ./mako.nix
+    ./waybar.nix
+    ./telegram.nix
+    ./nvim.nix
+    ./yazi.nix
+    ./brightnessctl.nix
+    ./obsidian.nix
+    ./rnote.nix
+    ./discord.nix
+    ./kew.nix
   ];
 
   home.packages = with pkgs; [
@@ -91,52 +92,58 @@ in
 
   home.file = {
     ".config/mako/config" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/mako/config";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/mako/config";
     };
     ".config/yazi/keymap.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/yazi/keymap.toml";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/yazi/keymap.toml";
     };
     ".zshenv" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/zsh/.zshenv";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/zsh/.zshenv";
     };
     ".zshrc" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/zsh/.zshrc";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/zsh/.zshrc";
     };
     ".bash_functions" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/.bash_functions";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/.bash_functions";
     };
     ".gitconfig" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/.gitconfig";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/.gitconfig";
     };
   };
 
   xdg.configFile = {
     "niri" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/niri";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/niri";
+      recursive = true;
+      force = true;
+    };
+
+    "REAPER" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/REAPER";
       recursive = true;
       force = true;
     };
 
     "hypr" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/hypr";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr";
       recursive = true;
       force = true;
     };
 
     "alacritty" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/alacritty";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/alacritty";
       recursive = true;
       force = true;
     };
 
     "kitty" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/kitty";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/kitty";
       recursive = true;
       force = true;
     };
 
     "tmux" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/tmux";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";
       recursive = true;
       force = true;
     };

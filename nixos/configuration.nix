@@ -36,7 +36,6 @@
       ./httptoolkit.nix
       ./docker.nix
       ./kdeconnect.nix
-      ./obs_studio.nix
       ./ydotool.nix
       ./zsh.nix
       ./wine.nix
@@ -133,7 +132,7 @@
     xwayland-satellite
   ];
 
-  environment.etc.vimrc.source = "${config.users.users.valtrois.home}/.dotfiles/config/vim/vimrc";
+  environment.etc.vimrc.source = "${config.users.users.valtrois.home}/dotfiles/config/vim/vimrc";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -31,7 +31,7 @@
       system = system;
       specialArgs = { inherit inputs; };
       modules = [
-        ./config/etc/nixos/configuration.nix
+        ./nixos/configuration.nix
         /etc/nixos/hardware-configuration.nix
         home-manager.nixosModules.home-manager
         { home-manager.extraSpecialArgs = { inherit inputs; }; }

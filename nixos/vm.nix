@@ -1,5 +1,5 @@
 # to run it:
-# $ nix-build '<nixpkgs/nixos>' -A vm -I nixos-config=/home/valtrois/.dotfiles/config/etc/nixos/vm.nix -o /home/valtrois/vm
+# $ nix-build '<nixpkgs/nixos>' -A vm -I nixos-config=/home/valtrois/dotfiles/nixos/vm.nix -o /home/valtrois/vm
 # then
 # $ ~/vm/bin/run-nixos-vm -display gtk,grab-on-hover=on
 

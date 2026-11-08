@@ -23,7 +23,13 @@ lib.mkIf trigger {
     ];
   };
 
-  environment.systemPackages = [ 
-      pkgs.obs-cmd 
-    ];
+  home.packages = [ 
+    pkgs.obs-cmd 
+  ];
+
+  home.file.".config/obs-studio/basic/profiles/Untitled/basic.ini".text = ''
+    [Hotkeys]
+    OBSBasic.StartRecording=[{"key": "OBS_KEY_R", "modifiers": {"shift": true, "super": true}}]
+    OBSBasic.StopRecording=[{"key": "OBS_KEY_R", "modifiers": {"shift": true, "super": true}}]
+  '';
 }

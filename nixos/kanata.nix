@@ -8,7 +8,7 @@ lib.mkIf trigger {
     enable = true;
     keyboards = {
       valtrois = {
-        configFile = "${/home/valtrois/.dotfiles/kanata/kanata.kbd}";
+        configFile = "${/home/valtrois/dotfiles/config/kanata/kanata.kbd}";
       };
     };
   };
