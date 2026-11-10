@@ -1,0 +1,9 @@
+[open]
+prepend_rules = [
+    { url = "*.avi", use = "play" },
+]
+
+[opener]
+play = [
+    { run = 'vlc %s', orphan = true, desc = "Play" }
+]

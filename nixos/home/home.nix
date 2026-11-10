@@ -94,6 +94,9 @@ in
     ".config/mako/config" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/mako/config";
     };
+    ".config/yazi/yazi.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/yazi/yazi.toml";
+    };
     ".config/yazi/keymap.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/yazi/keymap.toml";
     };
@@ -118,11 +121,11 @@ in
       force = true;
     };
 
-    "REAPER" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/REAPER";
-      recursive = true;
-      force = true;
-    };
+    # "REAPER" = {
+    #   source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/REAPER";
+    #   recursive = true;
+    #   force = true;
+    # };
 
     "hypr" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr";
