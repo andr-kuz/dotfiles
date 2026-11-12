@@ -377,6 +377,7 @@ binds {
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
     Mod+E { spawn-sh "kitty -e yazi"; }
+    Mod+Ctrl+E { spawn-sh "kitty -e yazi /mnt/external/"; }
     Mod+W { spawn-sh "pkill -SIGUSR1 waybar"; }
     Mod+Space { spawn-sh "hints -v"; }
     Mod+BracketLeft  { spawn-sh "copyq previous"; }
