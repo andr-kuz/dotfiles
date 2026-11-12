@@ -1,3 +1,4 @@
+set nocompatible
 " do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
 let mapleader = " "
