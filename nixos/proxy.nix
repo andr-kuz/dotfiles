@@ -15,10 +15,13 @@ in
   services.tor = {
     enable = true;
     client.enable = true;
+    controlSocket.enable = true; # Enables ControlSocket & CookieAuthentication for shared Tor connection automatically
     settings = {
       UseBridges = true;
       ClientTransportPlugin = plugin;
       Bridge = bridges;
+      # Optional: Add a dedicated SOCKSPort for Tor Browser to keep stream isolation separate from Privoxy
+      SOCKSPort = [ 9150 ];
     };
   };
 
@@ -27,5 +30,11 @@ in
     enableTor = true;
   };
 
-  # users.users.valtrois.extraGroups = [ "tor" ];
+  users.users.valtrois.extraGroups = [ "tor" ];
+
+  environment.sessionVariables = {
+    TOR_SKIP_LAUNCH = "1";
+    TOR_SOCKS_PORT = "9150";
+    TOR_CONTROL_SOCKET = "/run/tor/control";
+  };
 }
