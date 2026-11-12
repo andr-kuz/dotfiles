@@ -6,6 +6,7 @@
 {
   imports =
     [
+      ./xray.nix
       ./ollama.nix
       ./thinkpad.nix
       ./hints.nix

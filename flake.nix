@@ -31,6 +31,7 @@
       system = system;
       specialArgs = { inherit inputs; };
       modules = [
+        { nixpkgs.overlays = [ (import ./nixos/overlays/xray.nix) ]; }
         ./nixos/configuration.nix
         /etc/nixos/hardware-configuration.nix
         home-manager.nixosModules.home-manager
