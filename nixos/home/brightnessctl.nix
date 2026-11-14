@@ -1,6 +1,6 @@
 { lib, pkgs, ... }: 
 let
-  trigger = builtins.pathExists /var/tmp/brightnessctl.enable;
+  trigger = builtins.pathExists /var/tmp/laptop.enable;
 in
 lib.mkIf trigger
 {
