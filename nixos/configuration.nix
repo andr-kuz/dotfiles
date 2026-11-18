@@ -6,6 +6,7 @@
 {
   imports =
     [
+      ./syncthing.nix
       ./xray.nix
       ./ollama.nix
       ./thinkpad.nix

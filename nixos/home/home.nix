@@ -63,33 +63,6 @@ in
     ${pkgs.rustup}/bin/rustup default stable # set rust defaul channel
   '';
 
-  services.syncthing = {
-    enable = true;
-    # https://wiki.nixos.org/wiki/Syncthing
-    # openDefaultPorts = true;
-    # settings = {
-    #   gui = {
-    #     user = "myuser";
-    #     password = "mypassword";
-    #   };
-    #   devices = {
-    #     "device1" = { id = "DEVICE-ID-GOES-HERE"; };
-    #     "device2" = { id = "DEVICE-ID-GOES-HERE"; };
-    #   };
-    #   folders = {
-    #     "Documents" = {
-    #       path = "/home/myusername/Documents";
-    #       devices = [ "device1" "device2" ];
-    #     };
-    #     "Example" = {
-    #       path = "/home/myusername/Example";
-    #       devices = [ "device1" ];
-    #       ignorePerms = false; # Enable file permission syncing
-    #     };
-    #   };
-    # };
-  };
-
   home.file = {
     ".config/mako/config" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/mako/config";
