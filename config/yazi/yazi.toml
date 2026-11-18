@@ -7,3 +7,6 @@ prepend_rules = [
 play = [
     { run = 'vlc %s', orphan = true, desc = "Play" }
 ]
+
+[mgr]
+linemode = "size"
