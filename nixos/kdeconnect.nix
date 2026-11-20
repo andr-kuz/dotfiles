@@ -2,38 +2,18 @@
 
 let
   trigger = builtins.pathExists /var/tmp/kdeconnect.enable;
-
-  hypr-kdeconnect-fix = pkgs.stdenv.mkDerivation {
-    pname = "hypr-kdeconnect-fix";
-    version = "unstable";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "gfhdhytghd";
-      repo = "hypr-kdeconnect-fix";  # https://github.com/gfhdhytghd/hypr-kdeconnect-fix
-      rev = "0bc47e676ae2d6964cec4020be9966bbe85985e6";  # or 'master'
-      sha256 = "sha256-s8hWpEIyWpwW9w8t80Byqp+8jG0ChddtbDB7eJ/7ebA=";
-    };
-
-    nativeBuildInputs = with pkgs; [
-      cmake
-      ninja
-      pkg-config
-      qt6.wrapQtAppsHook
-    ];
-
-    buildInputs = with pkgs; [
-      qt6.qtbase
-      wayland
-      libxkbcommon
-      libei
-      xdg-desktop-portal
-    ];
-  };
 in
 lib.mkIf trigger {
-  programs.kdeconnect.enable = true;
-  environment.systemPackages = [ 
-    hypr-kdeconnect-fix 
-    pkgs.wl-clipboard
+  # programs.kdeconnect.enable = true; # commented out because it enables the global firewall
+  environment.systemPackages = with pkgs; [ 
+    wl-clipboard
+    kdePackages.kdeconnect-kde
   ];
+
+  networking.firewall = {
+    extraCommands = ''
+      iptables -A nixos-fw -p tcp -s 192.168.1.0/24 --dport 1714:1764 -j nixos-fw-accept
+      iptables -A nixos-fw -p udp -s 192.168.1.0/24 --dport 1714:1764 -j nixos-fw-accept
+    '';
+  };
 }
