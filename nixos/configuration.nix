@@ -6,6 +6,7 @@
 {
   imports =
     [
+      ./azerothcore.nix
       ./syncthing.nix
       ./xray.nix
       ./ollama.nix
@@ -161,7 +162,7 @@
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 3724 8085 ];
+    allowPing = false;
   };
 
   # This value determines the NixOS release from which the default
