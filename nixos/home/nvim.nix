@@ -1,14 +1,11 @@
 { lib, pkgs, config, inputs, ... }:
 
 let
-  triggerRegular = builtins.pathExists /var/tmp/nvim.enable;
   triggerNightly = builtins.pathExists /var/tmp/nvim_nightly.enable;
   chosenNeovim = if triggerNightly 
     then inputs.neovim-nightly-overlay.packages.${pkgs.system}.default 
     else pkgs.neovim;
-  trigger = triggerNightly || triggerRegular;
 in
-lib.mkIf trigger
 {
   home.packages = [
     chosenNeovim
