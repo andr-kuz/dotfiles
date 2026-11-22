@@ -56,7 +56,7 @@ in
     meslo-lgs-nf  # Powerlevel10k icon font
     hyprpaper
     hyprlock
-    keepass
+    keepassxc
     # vital
   ];
 
