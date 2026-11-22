@@ -20,6 +20,10 @@
           path = "/home/valtrois/Sync/";
           devices = [ "laptop" "phone" "pc" ];
         };
+        "Pictures" = {
+          path = "/home/valtrois/Pictures/";
+          devices = [ "laptop" "phone" "pc" ];
+        };
         "jf0or-2y7eu" = {  # phone folder unique ID declared by Syncthing-Fork Android app
           label = "DCIM";
           path = "/home/valtrois/DCIM";
