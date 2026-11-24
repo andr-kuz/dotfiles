@@ -48,17 +48,6 @@
   # `sudo udevadm control --reload-rules && sudo udevadm trigger`
   # to apply `services.udev.extraRules`
   hardware.keyboard.qmk.enable = true;
-  services.udev.extraRules = ''
-    # Keychron B1 Pro device info:
-    # PID 0x071a
-    # VID 0X3434
-    # VPID 875824922
-    # Keychron B1 Pro WebHID access (Wired Cable Mode)
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0660", TAG+="uaccess"
-
-    # Keychron 2.4GHz Dongle Rule (Optional, if using wireless configuration fallback)
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="3434", MODE="0660", TAG+="uaccess"
-  '';
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -129,7 +118,6 @@
     blueman
     vlc
     pipx
-    tmux
     tree-sitter
     xwayland-satellite
   ];
@@ -151,8 +139,6 @@
     };
   };
   programs.niri.enable = true;
-  # programs.hyprland.enable = true;
-  # programs.hyprland.xwayland.enable = true;
 
   services.logind.settings.Login = {
     HandlePowerKey="suspend";
