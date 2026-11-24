@@ -35,7 +35,6 @@
       ./kanata.nix
       ./sunshine.nix
       ./waydroid.nix
-      ./android-adb.nix
       ./httptoolkit.nix
       ./docker.nix
       ./kdeconnect.nix
