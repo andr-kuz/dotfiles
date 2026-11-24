@@ -5,5 +5,6 @@ in
 lib.mkIf trigger {
   environment.systemPackages = with pkgs; [
     httptoolkit
+    android-tools
   ];
 }
