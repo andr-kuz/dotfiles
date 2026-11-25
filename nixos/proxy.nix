@@ -25,10 +25,10 @@ in
     };
   };
 
-  # services.privoxy = {
-  #   enable = true;
-  #   enableTor = true;
-  # };
+  services.privoxy = {
+    enable = true;
+    enableTor = true;
+  };
 
   users.users.valtrois.extraGroups = [ "tor" ];
 
