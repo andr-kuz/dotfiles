@@ -70,7 +70,7 @@ if [ "$UPDATE_MODE" = true ]; then
 fi
 
 # excluding env.toml so we're not indexing any changes in there
-# run git update-index --no-skip-worktree nixos/env.toml if you want to track this file back again
+# run `git update-index --no-skip-worktree nixos/env.toml` if you want to track this file back again
 git update-index --skip-worktree nixos/env.toml
 # use --impure if you need to allow absolute path import like `/etc/nixos/hardware-configuration.nix`
 nixos-rebuild switch --flake . --impure  # add `--option binary-caches "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"` if nixos cache is not responding
